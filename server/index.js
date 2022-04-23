@@ -1,21 +1,26 @@
-const epxress = require('express')
-const app = epxress()
-const dotenv = require('dotenv')
-const cors = require('cors')
-const cookieParser = require('cookie-parser')
-const authRoute = require('./routes/auth')
-require('./config/dbConnection')
-dotenv.config()
+const epxress = require('express');
+const app = epxress();
+const dotenv = require('dotenv');
+const cors = require('cors');
+const authRoute = require('./routes/auth');
+const userRoute = require('./routes/users');
+const orderRoute = require('./routes/orders');
+const productRoute = require('./routes/products');
+const logger = require('./utils/logger');
+
+require('./config/dbConnection');
+dotenv.config();
+
+app.use(cors());
+app.use(epxress.json());
+app.use('/api/auth', authRoute);
+app.use('/api/users', userRoute);
+app.use('/api/products', productRoute);
+app.use('/api/orders', orderRoute);
 
 
 
-app.use(cors())
-app.use(epxress.json())
-app.use(cookieParser())
-app.use('/api/users', authRoute)
 
-
-
-app.listen(4000,()=>{
-    console.log('Server running on port 4000.');
-})
+app.listen(4000, () => {
+    logger.info('Server running on port 4000.');
+});

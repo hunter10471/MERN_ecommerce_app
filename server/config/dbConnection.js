@@ -1,9 +1,11 @@
-const mongoose = require('mongoose')
-const dotenv = require('dotenv')
-dotenv.config()
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config();
+const logger = require('../utils/logger');
 
 mongoose.connect(process.env.MONGO_URI).then(()=>{
-    console.log('Connected to database succesfully.');
-}).catch((err)=>{
-    console.log('An error occured: '+ err);
-})
+    logger.info('Connected to database succesfully.');
+}).catch((error)=>{
+    logger.error({message:'Could not connect to database.',error:error});
+    process.exit(1);
+});

@@ -1,79 +1,77 @@
-const User = require('../models/user')
-const jwt = require('jsonwebtoken')
-const cryptojs = require('crypto-js')
+const User = require('../models/user');
+const cryptojs = require('crypto-js');
+const logger = require('../utils/logger');
 
 
-const generateAuthToken = (user) =>{
+const getAllUsers = async (req,res) =>{
     try {
-        const token = jwt.sign({_id: (user._id).toString()}, process.env.JWT_SECRET_KEY)
-        user.tokens = user.tokens.concat([{token: token}])
-        return token      
-    } catch (err) {
-        console.log('Token generation error!');
-        throw err
-    }
-}
-
-
-const signUp = async (req,res) => {
-    const user = new User({
-        username: req.body.username,
-        email: req.body.email,
-        password: cryptojs.AES.encrypt(req.body.password, process.env.CRYPTOJS_SECRET_KEY).toString()
-    })
-    try {
-        const token = generateAuthToken(user)
-        console.log(token);
-        const savedUser = await user.save()
-        res.cookie(`auth_token`, token, {
-            maxAge: 604800000,
-            httpOnly: true
-        })
-        res.status(201).json({signup : true, message: 'Signup successful.'})
+        const users = await User.find().sort({_id: -1});
+        if(!users) return res.status(404).json('Could not find any users.');
+        const usersArray = Object.values(users);
+        res.status(200).json({message:'Users have been fetched successfully: ',users:usersArray.map(el=>{
+            const {password, ...others} = el._doc; //eslint-disable-line
+            return others;
+        })});
     } catch (error) {
-        res.status(400).json({signup: false, message: 'Signup unsuccessful.'})
+        console.log('Error fetching all users');
+        res.status(500).json({message:'Could not fetch all users.',error:error});
     }
-}
+};
 
-
-const login = async (req,res) =>{
-    const existingUser = await User.findOne({username: req.body.username})
-    if(!existingUser) return res.status(404).json({ isLogin: false, message:'User not found.'})
-    const hashedPassword = cryptojs.AES.decrypt(existingUser.password, process.env.CRYPTOJS_SECRET_KEY)
-    const originalPassword = hashedPassword.toString(cryptojs.enc.Utf8)
-    if(originalPassword !== req.body.password) return res.status(403).json({ isLogin: false, message:'Incorrect credentials.'}) 
-    const token = generateAuthToken(existingUser)
-    res.cookie("auth_token", token, {
-        maxAge: 604800000,
-        httpOnly: true
-    })
-    res.status(200).json({ isLogin: true, message:'User login Successful!'})
-
-}
-
-const tokenAuthentication = async (req,res) =>{
+const getUser = async(req,res) =>{
     try {
-        const token = req.cookies.auth_token
-        if(token){
-             const verifyToken = jwt.verify(token, process.env.JWT_SECRET_KEY)
-             const user = await User.findOne({_id: verifyToken._id})
-             const {password, ...others} = user._doc
-            res.status(200).json({isToken: true, message:'Token provided is valid.', user: others})
-        }else{
-            console.log('Token verification failed.');
-            res.status(401).json({isToken: false, message: 'Token verification failed.'})
-        } 
-    } catch (error) {
-        console.log('Token provided is invalid.');
-        res.status(401).json({isToken: false, message: 'Token provided is invalid.'})
+        const user = await User.findOne({username:req.body.username});
+        if(!user) return res.status(404).json('User not found.');
+        const {password, ...others} = user._doc //eslint-disable-line
+        res.status(200).json({ message:'User found.',user:others});
+    }catch(error){
+        logger.error({message:'User could not be fetched.',error:error});
+        res.status(500).json({message:'User could not be fetched.',error:error});
     }
+};
 
-}
+const getUserPublic = async(req,res) =>{
+    try {
+        const user = await User.findOne({username:req.params.username});
+        if(!user) return res.status(404).json('User not found.');
+        res.status(200).json({ message:'User found.',user: true});
+
+    }catch(error){
+        logger.error({message:'User could not be fetched.',error:error});
+        res.status(500).json({message:'User could not be fetched.',error:error});
+    }
+};
 
 
+const updateUser = async(req,res) =>{
+    if(req.body.password){
+        req.body.password = cryptojs.AES.encrypt(req.body.password, process.env.CRYPTOJS_SECRET_KEY).toString();
+    }
+    try {
+        const existingUser = await User.findByIdAndUpdate(req.params.id, {$set:req.body}, {new:true});
+        const updatedInfo = Object.entries(req.body);
+        const updatedUser = Object.entries(existingUser._doc);
+        const updatedFields = Object.fromEntries(updatedInfo.filter(el => updatedUser.map(el2 =>{
+            return el.toString() === el2.toString();
+        })));
+        res.status(200).json({message:'User has been updated successfully', user: updatedFields });
+    } catch (error) {
+        logger.error({message:'Could not update user.',error:error});
+        res.status(400).json({message:'User could not be updated.',error:error});
+    }
+};
 
-module.exports = {
-    signUp,
-    login,
-    tokenAuthentication,
-}
+
+const deleteUser = async(req,res) =>{
+    try {
+        const user = await User.findByIdAndDelete(req.params.id);
+        if(!user) return res.status(404).json('User could not be deleted because the user does not exists.');
+        const {password, ...others} = user._doc; //eslint-disable-line
+        res.status(200).json({message:'User with the following has been deleted successfuly.',username: others.username, userId: others._id});
+    } catch (error) {
+        logger.error({message:'An error occured while deleting the user.',error:error});
+        res.status(500).json({message:'An error occured while deleting the user.',error:error});
+    }
+};
+
+module.exports = {getAllUsers, getUser, updateUser, deleteUser, getUserPublic};

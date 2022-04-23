@@ -1,19 +1,12 @@
-const User = require('../models/user')
-const router = require('express').Router()
-const cryptojs = require('crypto-js')
+const router = require('express').Router();
+const { verifyTokenAndAdmin, verifyTokenAndAuth} = require('../controllers/authController');
+const {getAllUsers, getUser, updateUser, deleteUser, getUserPublic} = require('../controllers/userController');
+
+router.get('/public/:username', getUserPublic);
+router.get('/',verifyTokenAndAdmin,getAllUsers);
+router.get('/:id',verifyTokenAndAdmin, getUser);
+router.put('/:id', verifyTokenAndAuth, updateUser);
+router.delete('/:id', verifyTokenAndAuth, deleteUser);
 
 
-router.get('/findUser/:id', async(req,res)=>{
-    try {
-        const user = await User.findById(req.params.id)
-        !user && res.status(404).json('User not found.')
-        const {password, ...others} = user._doc
-        res.status(200).json(others)
-    } catch (error) {
-        console.log(error);
-    }
-})
-
-
-
-module.exports = router
+module.exports = router;

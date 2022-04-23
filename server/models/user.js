@@ -1,44 +1,39 @@
-const mongoose = require('mongoose')
-const jwt = require('jsonwebtoken')
+const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
     username:{
-        type:String,
-        required:true,
-        unique:true
+        type: String,
+        required: true,
+        unique: true
     },
     email:{
-        type:String,
-        required:true,
-        unique:true
+        type: String,
+        required: true,
+        unique: true
     },
     password:{
-        type:String,
+        type: String,
+        required: true,
+    },
+    isAdmin:{
+        type: Boolean,
+        default:false,
         required:true,
     },
     gender:{
-        type:String
+        type: String
     },
     avatar:{
-        type:String
+        type: String
     },
     phone:{
-        type:Number,
-        unique:true
+        type: Number,
+        index: true,
+        sparse: true,
+        unique: true,
     },
-    isAdmin:{
-        type:Boolean,
-        default:false
-    },
-    tokens:[
-        {
-            token:{
-                type:String
-            }
-        }
-    ]
-},{timestamps:true})
+},{timestamps:true});
 
 
 
-module.exports  = new mongoose.model('User',userSchema)
+module.exports  = mongoose.model('User',userSchema);
