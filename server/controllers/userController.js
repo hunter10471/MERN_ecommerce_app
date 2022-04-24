@@ -32,13 +32,16 @@ const getUser = async(req,res) =>{
 
 const getUserPublic = async(req,res) =>{
     try {
-        const user = await User.findOne({username:req.params.username});
+        const qUsername = req.query.username;
+        const qEmail= req.query.email;
+        const user = await User.findOne({$or:[{username:qUsername},{email:qEmail}]});
         if(!user) return res.status(404).json('User not found.');
         res.status(200).json({ message:'User found.',user: true});
 
     }catch(error){
         logger.error({message:'User could not be fetched.',error:error});
         res.status(500).json({message:'User could not be fetched.',error:error});
+        res.send('error');
     }
 };
 

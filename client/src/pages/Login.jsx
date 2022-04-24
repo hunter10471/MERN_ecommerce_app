@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { Link, useNavigate } from 'react-router-dom';
 import {useDispatch, useSelector } from 'react-redux'
 import { login } from '../redux/apiCalls';
@@ -13,23 +14,31 @@ export const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [userError, setUserError] = useState(false)
-    const {Error,isFetching} = useSelector((state)=>state.user);
+    const [genericError, setGenericError] = useState(false)
+
+    const {isFetching} = useSelector((state)=>state.user);
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
     const onSubmit = async(e) =>{
         e.preventDefault();
         try {
-           let res = await axios.get(BASE_URL+`users/public/${username}`);
-           if(res){
-               login(dispatch, {username, password});
-               navigate('/');
-           }else{
-               throw 'err'; //eslint-disable-line
-           }
-        } catch (error) {
-            setUserError(true);
-        }
+        await axios.get(BASE_URL+`users/public?username=${username}`);
+        login(dispatch,{username,password}).then((res)=>{
+            if(res.response.status === 403){
+                setGenericError(true)
+                return;
+            }else if(res.response.status === 200){
+                navigate('/')
+            }
+        }).catch((err)=>console.log(err.response))
+     
+        }catch (error) {
+            setUserError(true)
+             }
     }
+
     const LoadingAnimation = () => { 
         return(
             <svg role="status" className=" w-[14px] h-[14px] sm:w-[16px] sm:h-[16px] text-gray-200 animate-spin dark:text-gray-600 fill-primaryLight" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,6 +54,8 @@ export const Login = () => {
       <div className='mx-4 w-full mt-[5vh]'>
     <form onSubmit={onSubmit} className='flex shadow-xl min-w-[200px] max-w-[350px]  bg-white flex-col ring-primaryLight ring-2 rounded-sm p-5 sm:p-10 mx-auto' >
         <h1 className='text-2xl md:text-3xl font-heading text-center my-5 underline font-medium'>Login</h1>
+        { userError && <span className='bg-red-300 px-4 py-2 rounded-md text-xs mb-2 md:text-sm text-center relative'>Username does not exists. <CloseOutlinedIcon onClick={()=>setUserError(false)} fontSize='' className='absolute top-1 right-1 cursor-pointer' /> </span> }
+        { genericError && <span className='bg-red-300 px-4 py-2 rounded-md text-xs mb-4 md:text-sm text-center relative'>User credentials incorrect. <CloseOutlinedIcon onClick={()=>setGenericError(false)} fontSize='' className='absolute top-1 right-1 cursor-pointer' /></span> }
         <label className='text-sm md:text-md' htmlFor="">Username</label>
         <input required onChange={(e)=>setUsername(e.target.value)} className='placeholder:italic hover:bg-slate-100 ring-slate-200  hover:ring-blue-400 my-2 sm:my-4 text-sm md:text-md  px-2 sm:px-4 min-w-[200px] py-2 focus:outline-none focus:ring-blue-400 ring-2 ring-transparent' type="text" placeholder='Username' />
         <label className='text-sm md:text-md' htmlFor="">Password</label>
@@ -52,14 +63,12 @@ export const Login = () => {
         <span onClick={()=>setVisiblePassword(!visiblePassword)} className='absolute right-4 bottom-[0.85rem] sm:bottom-[1.4rem]  cursor-pointer text-gray-500 '>{visiblePassword===true ? <VisibilityOffIcon/> : <VisibilityIcon/>}</span>
         <input required onChange={(e)=>setPassword(e.target.value)} className='placeholder:italic hover:bg-slate-100 w-full ring-slate-200 hover:ring-blue-400 my-2 sm:my-4 text-sm md:text-md  px-2 sm:px-4 min-w-[200px] py-2 focus:outline-none focus:ring-blue-400 ring-2 ring-transparent' type={visiblePassword === true ? 'text' : 'password'} placeholder='Password' />
         </div>
-        { userError && <span className='text-red-600 text-xs mb-2 md:text-sm text-center'>Username or password is incorrect.</span> }
         <div className='max-w-[350px] mb-2 flex'>
         <input className=' w-[16px] h-[20px] cursor-pointer' type="checkbox" name="remember" id="" />
         <span className='text-sm md:text-md ml-2 '>Remember me</span>
         </div>
         <span className='text-sm md:text-md mb-2'>Forgot your password ? <u className='font-medium cursor-pointer'>Recover</u>.</span>
         <button disabled={isFetching} className='disabled:hover:bg-primary disabled:cursor-wait px-2 sm:px-4 py-2 mt-4 bg-primary hover:bg-primaryLight text-sm md:text-md '> { isFetching ? <span className='flex items-center justify-center'> <LoadingAnimation/> </span> : <span className='flex items-center justify-center'> <LockOutlinedIcon className='mr-1' fontSize='' /> Login </span> }</button>
-        {Error && <span className='text-red-600 text-xs md:text-sm mt-2 text-center'>An error occured, please try again.</span> }
         <div className='w-full flex justify-center mt-4'><div id="my-signin2" data-onsuccess="onSignIn"></div></div>
         <span className='text-sm md:text-md text-center mt-4'>Don't have an account? <b className='underline ml-1 cursor-pointer'> <Link to='/register'>Register </Link> </b>.</span>
     </form>

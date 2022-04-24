@@ -8,6 +8,7 @@ export const login = async(dispatch, user) =>{
         dispatch(loginSuccess(res.data));
     } catch (error) {
         dispatch(loginFailure());
+        return error;
     }
 };
 
@@ -16,5 +17,6 @@ export const logout = async(dispatch) =>{
         dispatch(logoutSuccess());
     } catch (error) {
         dispatch(logoutFailure());
+        return error;
     }
 };

@@ -68,18 +68,24 @@ const verifyTokenAndAuth = (req, res, next) =>{
 
 
 const signUp = async (req,res) => {
-    const {password, ...others} = req.body;
-    const user = new User({
-        ...others,
-        password: cryptojs.AES.encrypt(password, process.env.CRYPTOJS_SECRET_KEY).toString() 
-    });
-    try {
-        const token = generateAuthToken(user);
-        await user.save();
-        res.status(201).json({signup : true, message: 'Signup successful.', accessToken: token});
-    } catch (error) {
-        logger.error(error);
-        res.status(400).json({signup: false, message: 'Signup unsuccessful.', error: error});
+    const {password, username, email} = req.body;
+    const existingUser = await User.findOne({$or:[{username:username},{email:email}]});
+    if(existingUser){
+        res.status(400).json({signup: false, message: 'User already exists.', });
+    }else{
+        const user = new User({
+            username:username,
+            email:email,
+            password: cryptojs.AES.encrypt(password, process.env.CRYPTOJS_SECRET_KEY).toString() 
+        });
+        try {
+            const token = generateAuthToken(user);
+            await user.save();
+            res.status(201).json({signup : true, message: 'Signup successful.', accessToken: token});
+        } catch (error) {
+            logger.error(error);
+            res.status(500).json({signup: false, message: 'Signup unsuccessful.', error: error});
+        }
     }
 };
 
