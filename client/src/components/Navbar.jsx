@@ -3,7 +3,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {useNavigate} from 'react-router-dom'
@@ -22,7 +22,6 @@ const Button = ({type,text}) => {
 export const Navbar = () => {
   const user = useSelector((state)=>state.user.currentUser);
   const [toggle, setToggle] = useState(false)
-  const [userMenu, setUserMenu] = useState(false)
   const dispatch = useDispatch();
   const handleLogout = () =>{
     logout(dispatch);
@@ -44,7 +43,7 @@ export const Navbar = () => {
             <ShoppingCartOutlinedIcon fontSize='' />
             <span className='p-2 bg-primary flex items-center justify-center font-bold right-[50%] bottom-[50%] lg:right-4 lg:bottom-4 h-[24px] w-[24px] text-[10px] absolute rounded-[50%]'>68</span>
         </div>
-        {user ? <button onClick={handleLogout} className='ml-10 my-2 text-primary text-sm md:text-base'>Logout</button> : (<><Link className='mx-auto' to='/register'><Button text={'SignUp'} type={'signup'}/> </Link> 
+        {user ? <button onClick={handleLogout} className=' flex items-center ml-10 my-2 text-primary hover:underline text-sm md:text-base'> <LogoutIcon className='mr-1' fontSize='medium' /> Logout</button> : (<><Link className='mx-auto' to='/register'><Button text={'SignUp'} type={'signup'}/> </Link> 
         <Link to='/login'> <Button text={'Login'} type={'login'}/> </Link> </>) }
         </div>
     </div>

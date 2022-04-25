@@ -54,14 +54,14 @@ export const Login = () => {
       <div className='mx-4 w-full mt-[5vh]'>
     <form onSubmit={onSubmit} className='flex shadow-xl min-w-[200px] max-w-[350px]  bg-white flex-col ring-primaryLight ring-2 rounded-sm p-5 sm:p-10 mx-auto' >
         <h1 className='text-2xl md:text-3xl font-heading text-center my-5 underline font-medium'>Login</h1>
-        { userError && <span className='bg-red-300 px-4 py-2 rounded-md text-xs mb-2 md:text-sm text-center relative'>Username does not exists. <CloseOutlinedIcon onClick={()=>setUserError(false)} fontSize='' className='absolute top-1 right-1 cursor-pointer' /> </span> }
-        { genericError && <span className='bg-red-300 px-4 py-2 rounded-md text-xs mb-4 md:text-sm text-center relative'>User credentials incorrect. <CloseOutlinedIcon onClick={()=>setGenericError(false)} fontSize='' className='absolute top-1 right-1 cursor-pointer' /></span> }
+        { userError && <span className='bg-red-300 border-2 border-red-500 px-4 py-2 rounded-md text-xs mb-2 md:text-sm text-center relative'>Username does not exists. <CloseOutlinedIcon onClick={()=>setUserError(false)} fontSize='' className='absolute top-1 right-1 cursor-pointer' /> </span> }
+        { genericError && <span className='bg-red-300 border-2 border-red-500 px-4 py-2 rounded-md text-xs mb-4 md:text-sm text-center relative'>User credentials incorrect. <CloseOutlinedIcon onClick={()=>setGenericError(false)} fontSize='' className='absolute top-1 right-1 cursor-pointer' /></span> }
         <label className='text-sm md:text-md' htmlFor="">Username</label>
-        <input required onChange={(e)=>setUsername(e.target.value)} className='placeholder:italic hover:bg-slate-100 ring-slate-200  hover:ring-blue-400 my-2 sm:my-4 text-sm md:text-md  px-2 sm:px-4 min-w-[200px] py-2 focus:outline-none focus:ring-blue-400 ring-2 ring-transparent' type="text" placeholder='Username' />
+        <input required onChange={(e)=>setUsername(e.target.value)} className='placeholder:italic hover:bg-slate-100 ring-slate-300  hover:ring-blue-400 my-2 sm:my-4 text-sm md:text-md  px-2 sm:px-4 min-w-[200px] py-2 focus:outline-none focus:ring-blue-400 ring-2 ring-transparent' type="text" placeholder='Username' />
         <label className='text-sm md:text-md' htmlFor="">Password</label>
         <div className='relative'>
         <span onClick={()=>setVisiblePassword(!visiblePassword)} className='absolute right-4 bottom-[0.85rem] sm:bottom-[1.4rem]  cursor-pointer text-gray-500 '>{visiblePassword===true ? <VisibilityOffIcon/> : <VisibilityIcon/>}</span>
-        <input required onChange={(e)=>setPassword(e.target.value)} className='placeholder:italic hover:bg-slate-100 w-full ring-slate-200 hover:ring-blue-400 my-2 sm:my-4 text-sm md:text-md  px-2 sm:px-4 min-w-[200px] py-2 focus:outline-none focus:ring-blue-400 ring-2 ring-transparent' type={visiblePassword === true ? 'text' : 'password'} placeholder='Password' />
+        <input required onChange={(e)=>setPassword(e.target.value)} className='placeholder:italic hover:bg-slate-100 w-full ring-slate-300 hover:ring-blue-400 my-2 sm:my-4 text-sm md:text-md  px-2 sm:px-4 min-w-[200px] py-2 focus:outline-none focus:ring-blue-400 ring-2 ring-transparent' type={visiblePassword === true ? 'text' : 'password'} placeholder='Password' />
         </div>
         <div className='max-w-[350px] mb-2 flex'>
         <input className=' w-[16px] h-[20px] cursor-pointer' type="checkbox" name="remember" id="" />
