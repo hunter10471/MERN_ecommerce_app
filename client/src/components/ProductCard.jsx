@@ -14,7 +14,7 @@ export const ProductCard = ({img, discount, title, price, rating, shipping}) => 
             <h1 className='flex  text-secondary lg:text-2xl md:text-xl sm:text-lg text-base  '> <span className='mr-4'>{title}</span><span className=' ml-auto font-medium'>${price}</span></h1>
             <span className='text-slate-500 text-[10px] sm:text-xs md:text-sm tracking-wide mr-auto'>Outdoor grilling stove</span>
         </div>
-        <div className='flex pt-2 sm:flex-row flex-col sm:items-center '>
+        <div className='flex pt-2 flex-row sm:items-center '>
         <Rating name="half-rating" size='small' defaultValue={2.5} precision={0.5} readOnly />
         <span className='ml-1 sm:ml-2 md:text-sm text-xs text-primary font-medium'>
             2,224
