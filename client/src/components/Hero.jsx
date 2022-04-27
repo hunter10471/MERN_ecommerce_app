@@ -17,18 +17,18 @@ const Container = styled.div`
 export const Hero = () => {
     const [next, setNext] = useState(0)
     return (
-    <div className='w-full relative overflow-x-hidden h-[600px]'>
+    <div className='w-full relative mb-10 overflow-x-hidden h-[600px]'>
          <Container next={next}>
         {products.map(el=>{
             return(
      <div key={el.title} className='w-full h-full shrink-0'>
        <img src={el.img} className='absolute w-full -z-10 h-full object-cover' alt="" />
        <div className='flex flex-col h-full w-full bg-gradient-to-r from-secondary justify-center pl-10  '>
-           <h1 className=' text-xl sm:text-3xl lg:text-6xl text-white font-bold font-heading my-1'>{el.title}</h1>
-           <span className='lg:text-xl sm:text-lg text-md text-white font-medium my-1'>Get them now for 60% off on selected banks. <br /> <span className='font-light text-xs sm:text-sm '>Terms and conditions apply.* </span> </span>
+           <h1 className=' text-3xl sm:text-4xl lg:text-6xl w-[80%] text-white font-bold font-heading my-1'>{el.title}</h1>
+           <span className='lg:text-xl sm:text-lg w-[60%] text-base text-white my-1'>Get them now for 60% off on selected banks. <br /> <span className='font-light text-xs sm:text-sm '>Terms and conditions apply.* </span> </span>
             <span className='my-5'>
-                <button className='text-white px-2 md:px-4 py-2 mx-2 rounded-sm ring-2 ring-primary hover:ring-primaryLight hover:bg-primaryLight bg-primary'>Add to cart</button>
-                <button className='text-primaryLight px-2 md:px-4 py-2 mx-2 rounded-sm ring-primaryLight hover:ring-primary hover:text-primary ring-2'>Add to wishlist</button>
+                <button className='text-white text-xs md:text-sm lg:text-base px-2 md:px-4 py-2 mx-2 rounded-sm ring-2 ring-primary hover:ring-primaryLight hover:bg-primaryLight bg-primary'>Add to cart</button>
+                <button className='text-primaryLight text-xs md:text-sm lg:text-base px-2 md:px-4 py-2 mx-2 rounded-sm ring-primaryLight hover:ring-primary hover:text-primary ring-2'>Add to wishlist</button>
             </span>
        </div>
        </div>

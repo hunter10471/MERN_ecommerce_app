@@ -1,10 +1,8 @@
-import Countdown from 'react-countdown'
-import DiscountOutlinedIcon from '@mui/icons-material/DiscountOutlined';
 
 export const CategoryCard = ({title, bgColor, img, desc}) => {
 
   return (
-    <div style={{backgroundColor:`${bgColor}`}} className={`rounded-md text-secondary pb-4 flex-shrink-0 m-4 shadow-xl `}>
+    <div style={{backgroundColor:`${bgColor}`}} className={`transition-all duration-200 hover:scale-[1.08] rounded-md text-secondary pb-4 flex-shrink-0 m-4 shadow-xl `}>
         <img className='w-[150px] h-[150px] sm:w-[200px] sm:h-[200px]  md:w-[250px] md:h-[250px] rounded-md object-cover object-center ' src={img} alt="" />
       <h1 className='flex my-2 items-center justify-center flex-col font-heading text-lg sm:text-xl md:text-2xl font-bold tracking-wider w-full text-center'>
         <span className=' text-xs sm:text-sm font-light mb-2 '>{desc}</span>
