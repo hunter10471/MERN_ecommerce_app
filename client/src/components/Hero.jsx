@@ -23,7 +23,7 @@ export const Hero = () => {
             return(
      <div key={el.title} className='w-full h-full shrink-0'>
        <img src={el.img} className='absolute w-full -z-10 h-full object-cover' alt="" />
-       <div className='flex flex-col h-full w-full bg-gradient-to-r from-secondary justify-center pl-10  '>
+       <div className='flex flex-col h-full w-full bg-gradient-to-r from-secondary justify-center pl-5 md:pl-10  '>
            <h1 className=' text-3xl sm:text-4xl lg:text-6xl w-[80%] text-white font-bold font-heading my-1'>{el.title}</h1>
            <span className='lg:text-xl sm:text-lg w-[60%] text-base text-white my-1'>Get them now for 60% off on selected banks. <br /> <span className='font-light text-xs sm:text-sm '>Terms and conditions apply.* </span> </span>
             <span className='my-5'>
@@ -35,12 +35,12 @@ export const Hero = () => {
             )
         })}
         </Container> 
-       <div className='absolute left-[calc(50%_-_50px)] bottom-[10px]'>
-           <span onClick={()=>setNext(0)} className={`cursor-pointer rounded-[50%] px-[7px] mr-5 ${next===0 ? 'bg-white' : 'bg-primaryLight'}`}></span>
-          <span onClick={()=>setNext(100)} className={` cursor-pointer rounded-[50%] px-[7px] mr-5 ${next===100 ? 'bg-white' : 'bg-primaryLight'}`}></span>
-           <span onClick={()=>setNext(200)} className={` cursor-pointer rounded-[50%] px-[7px] mr-5 ${next===200 ? 'bg-white' : 'bg-primaryLight'}`}></span>
-           <span onClick={()=>setNext(300)} className={` cursor-pointer rounded-[50%] px-[7px] mr-5 ${next===300 ? 'bg-white' : 'bg-primaryLight'}`}></span>
-           <span onClick={()=>setNext(400)} className={` cursor-pointer rounded-[50%] px-[7px] mr-5 ${next===400 ? 'bg-white' : 'bg-primaryLight'}`}></span>
+       <div className='absolute left-[calc(50%_-_65px)] bottom-[10px]'>
+           <button onClick={()=>setNext(0)}   className={` cursor-pointer w-[15px] md:w-[25px] opacity-60 h-[5px]  mr-5 ${next===0 ?   'bg-white' : 'bg-primaryLight'}`}></button>
+          <button  onClick={()=>setNext(100)} className={` cursor-pointer w-[15px] md:w-[25px] opacity-60 h-[5px]  mr-5 ${next===100 ? 'bg-white' : 'bg-primaryLight'}`}></button>
+           <button onClick={()=>setNext(200)} className={` cursor-pointer w-[15px] md:w-[25px] opacity-60 h-[5px]  mr-5 ${next===200 ? 'bg-white' : 'bg-primaryLight'}`}></button>
+           <button onClick={()=>setNext(300)} className={` cursor-pointer w-[15px] md:w-[25px] opacity-60 h-[5px]  mr-5 ${next===300 ? 'bg-white' : 'bg-primaryLight'}`}></button>
+           <button onClick={()=>setNext(400)} className={` cursor-pointer w-[15px] md:w-[25px] opacity-60 h-[5px]  mr-5 ${next===400 ? 'bg-white' : 'bg-primaryLight'}`}></button>
        </div>
        <img className='absolute bottom-0 left-[10px] w-[100px] md:w-[150px] object-contain h-[30px]' src={img2} alt="" />
     </div>

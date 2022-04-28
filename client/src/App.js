@@ -5,6 +5,7 @@ import { Register } from "./pages/Register";
 import { Login } from "./pages/Login";
 import { useSelector } from "react-redux";
 import { Footer } from "./components/Footer";
+import { ProductPage } from "./pages/ProductPage"
 
 function App() {
   const user = useSelector((state)=>state.user.currentUser);
@@ -14,6 +15,7 @@ function App() {
       <Navbar/>
       <Routes>
       <Route path="/" element={<Home/>} />
+      <Route path="/product" element={<ProductPage/>} />
       <Route path="/register" element={ user ? <Navigate replace to='/' /> : <Register/>} />
       <Route path="/login" element={user ? <Navigate replace to='/' /> :<Login/>}/>
       </Routes>
