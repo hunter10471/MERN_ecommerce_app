@@ -6,15 +6,15 @@ import RemoveIcon from '@mui/icons-material/Remove';
 export const ProductPage = ({category}) => {
   const [quantity, setQuantity] = useState(1)
   return ( 
-    <div className='px-2 flex justify-center items-center'>
-      <div className='m-2 sm:m-5 md:m-10 lg:m-20 self-start '>
+    <div className='px-2 flex flex-col md:flex-row justify-center items-center'>
+      <div className='m-5 md:m-2 lg:m-20 md:self-start '>
       <ProductImgSlider  />
       </div>
       <div className='m-2 sm:m-5 md:m-10 lg:m-20'>
-          <span className='py-1 px-2 bg-gray-300 uppercase tracking-wide font-heading text-xs md:text-sm'>Clothing</span>
+          <span className='py-1 px-2 bg-gray-300 uppercase tracking-wide font-heading text-[10px] sm:text-xs md:text-sm'>Clothing</span>
           <h1 className='my-4 text-xl md:text-2xl lg:text-3xl font-medium'>Black T-Shirts </h1>
             <span className='text-xs md:text-sm text-slate-400 uppercase my-2 tracking-wide'>SKU: 5446tux9zwec44542</span>
-            <p className='max-w-[400px] my-5 text-slate-600 tracking-wide'>
+            <p className='max-w-[400px] my-5 text-slate-600 text-sm md:text-base tracking-wide'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim itaque suscipit necessitatibus rerum incidunt ea at qui magni eos ad, aut distinctio explicabo reiciendis laboriosam quos dolorum debitis voluptatum. Ipsum enim, eum accusamus saepe eveniet eaque cupiditate dolore quidem similique, fugiat excepturi. Non, ea? Illo expedita animi ipsa quo at?
             </p>
             <div className='flex justify-between items-center mt-10'>

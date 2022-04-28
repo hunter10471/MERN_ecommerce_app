@@ -39,7 +39,7 @@ export const Navbar = () => {
         </div>
         <div className='mx-auto w-full lg:w-auto my-10 lg:my-0 flex items-center flex-col lg:flex-row '>
         {user && <div className='cursor-pointer mr-10 ml-5 flex items-center'> <img className='h-[32px] w-[32px] md:h-[42px] mx-3 md:w-[42px] rounded-[50%] object-cover' src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" /> {user.user.username}</div> }
-        <div className='mr-10 mb-5 lg:mb-0 mx-auto  w-full flex items-center justify-center  lg:w-auto cursor-pointer text-2xl lg:text-3xl relative'>
+        <div className='mb-5 lg:mb-0 mx-10  w-full flex items-center justify-center  lg:w-auto cursor-pointer text-2xl lg:text-3xl relative'>
             <ShoppingCartOutlinedIcon fontSize='' />
             <span className='p-2 bg-primary flex items-center justify-center font-bold right-[50%] bottom-[50%] lg:right-4 lg:bottom-4 h-[24px] w-[24px] text-[10px] absolute rounded-[50%]'>68</span>
         </div>
