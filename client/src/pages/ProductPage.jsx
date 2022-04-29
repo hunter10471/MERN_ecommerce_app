@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ProductImgSlider } from '../components/ProductImgSlider';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
+import { Link } from 'react-router-dom';
 
 export const ProductPage = ({category}) => {
   const [quantity, setQuantity] = useState(1)
+  useEffect(()=>{
+    window.scrollTo(0,0)
+},[])
   return ( 
     <div className='px-2 flex flex-col md:flex-row justify-center items-center'>
       <div className='m-5 md:m-2 lg:m-20 md:self-start '>
@@ -34,7 +38,7 @@ export const ProductPage = ({category}) => {
               </span>
             </div>
             <button className='mt-8 mb-2 w-full text-xs md:text-sm lg:text-base transition-all hover:bg-primaryLight py-2 px-4 bg-primary rounded-sm font-medium text-white'>Add to Cart</button>
-            <button className='mb-8 mt-2 w-full text-xs md:text-sm lg:text-base transition-all py-2 px-4 hover:border-primaryLight hover:text-primaryLight border-primary border-2 font-medium text-primary rounded-sm'>Checkout</button>
+            <Link to='/billing'><button className='mb-8 mt-2 w-full text-xs md:text-sm lg:text-base transition-all py-2 px-4 hover:border-primaryLight hover:text-primaryLight border-primary border-2 font-medium text-primary rounded-sm'>Checkout</button></Link>
             <div>
               <h2 className='font-medium text-sm md:text-base lg:text-lg my-5'>Specifications</h2>
               <div className='flex justify-between font-medium tracking-wide text-xs md:text-sm my-10'>

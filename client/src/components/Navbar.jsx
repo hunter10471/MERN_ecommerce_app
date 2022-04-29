@@ -6,7 +6,6 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import {useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {logout} from '../redux/apiCalls'
 
@@ -40,8 +39,10 @@ export const Navbar = () => {
         <div className='mx-auto w-full lg:w-auto my-10 lg:my-0 flex items-center flex-col lg:flex-row '>
         {user && <div className='cursor-pointer mr-10 ml-5 flex items-center'> <img className='h-[32px] w-[32px] md:h-[42px] mx-3 md:w-[42px] rounded-[50%] object-cover' src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" /> {user.user.username}</div> }
         <div className='mb-5 lg:mb-0 mx-10  w-full flex items-center justify-center  lg:w-auto cursor-pointer text-2xl lg:text-3xl relative'>
-            <ShoppingCartOutlinedIcon fontSize='' />
+        <Link to='/cart'>
+            <ShoppingCartOutlinedIcon fontSize='' /> 
             <span className='p-2 bg-primary flex items-center justify-center font-bold right-[50%] bottom-[50%] lg:right-4 lg:bottom-4 h-[24px] w-[24px] text-[10px] absolute rounded-[50%]'>68</span>
+        </Link>
         </div>
         {user ? <button onClick={handleLogout} className=' flex items-center ml-10 my-2 text-primary hover:underline text-sm md:text-base'> <LogoutIcon className='mr-1' fontSize='medium' /> Logout</button> : (<><Link className='mx-auto' to='/register'><Button text={'SignUp'} type={'signup'}/> </Link> 
         <Link to='/login'> <Button text={'Login'} type={'login'}/> </Link> </>) }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Countdown from 'react-countdown'
 import StarsIcon from '@mui/icons-material/Stars';
 import packageSvg from '../images/package.svg';
@@ -12,6 +12,9 @@ import { PolicyCard } from '../components/PolicyCard';
 import { Subscribe } from '../components/Subscribe';
 
 export const Home = () => {
+  useEffect(()=>{
+    window.scrollTo(0,0)
+},[])
   return (
     <>
     <Hero/>
