@@ -6,6 +6,7 @@ const authRoute = require('./routes/auth');
 const userRoute = require('./routes/users');
 const orderRoute = require('./routes/orders');
 const productRoute = require('./routes/products');
+const cartRoute = require('./routes/carts');
 const logger = require('./utils/logger');
 
 require('./config/dbConnection');
@@ -17,6 +18,7 @@ app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
 app.use('/api/products', productRoute);
 app.use('/api/orders', orderRoute);
+app.use('/api/carts', cartRoute);
 
 
 

@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 
 export const ProductCard = ({img, discount, title, price, rating, shipping}) => {
   return (
-    <div className='shadow-xl min-w-[45vw]  sm:min-w-[120px] max-w-[320px] m-1 sm:m-2 md:m-4 flex-shrink-0 bg-white '>
-        <img src={img} className='rounded-sm w-[45vw] h-[25vh] sm:h-[190px] sm:w-[190px] md:h-[250px] md:w-[250px] object-cover' alt="" />
+    <div className='rounded-xl shadow-xl shadow-gray-400 min-w-[45vw]  sm:min-w-[120px] max-w-[320px] m-1 sm:m-2 md:m-4 flex-shrink-0 bg-white '>
+        <img src={img} className='rounded-t-xl w-[45vw] h-[25vh] sm:h-[190px] sm:w-[190px] md:h-[250px] md:w-[250px] object-cover' alt="" />
         <div className='px-2 sm:px-4 md:px-6'>
         <div className='flex mt-2 pb-2 border-b-2 flex-col'>
             <h1 className='flex sm:flex-row flex-col text-secondary lg:text-2xl md:text-xl sm:text-lg text-base'> <span className='sm:mr-4'>{title}</span><span className=' sm:ml-auto font-medium'>${price}</span></h1>
@@ -23,7 +23,7 @@ export const ProductCard = ({img, discount, title, price, rating, shipping}) => 
         </div>
         <span className='flex items-center my-2 md:text-sm text-xs text-slate-700'><LocalShippingIcon className='mr-1 sm:mr-2' fontSize='' /> Free shipping</span>
         </div>
-        <Link to='/product' ><button className='w-full font-heading border-2 bg-slate-800 hover:bg-slate-700 font-medium text-primary transition-all duration-200 py-2 lg:text-base md:text-sm text-xs '>VIEW DETAILS</button></Link>
+        <Link to='/product' ><button className='w-full rounded-b-xl font-heading border-2 bg-slate-800 hover:bg-slate-700 font-medium text-primary transition-all duration-200 py-2 lg:text-base md:text-sm text-xs '>VIEW DETAILS</button></Link>
     </div>
   )
 }

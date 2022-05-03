@@ -7,10 +7,10 @@ export const CartList = ({product}) => {
   return (
     <table className='w-full lg:w-[700px] xl:w-[1000px]'>
         <tr className='text-xs md:text-sm lg:text-base text-slate-400 uppercase'>
-            <th className='sm:p-4 lg:p-6'>Product</th>
-            <th className='sm:p-4 lg:p-6'>Price</th>
-            <th className='sm:p-4 lg:p-6'>Quantity</th>
-            <th className='sm:p-4 lg:p-6'>Total</th>
+            <th className='sm:p-4 font-[400] lg:p-6'>Product</th>
+            <th className='sm:p-4 font-[400] lg:p-6'>Price</th>
+            <th className='sm:p-4 font-[400] lg:p-6'>Quantity</th>
+            <th className='sm:p-4 font-[400] lg:p-6'>Total</th>
         </tr>
         <tr>
             <td className='flex sm:p-4 lg:p-6 justify-center sm:flex-row flex-col items-center'><img className='rounded-[50%] object-cover w-[60px] h-[60px] lg:w-[80px] lg:h-[80px]' src="https://images.unsplash.com/photo-1610502778270-c5c6f4c7d575?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1167&q=80" alt="" />

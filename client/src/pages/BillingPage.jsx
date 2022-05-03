@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import CreditCardIcon from '@mui/icons-material/CreditCard';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import { Link } from 'react-router-dom';
 
 export const BillingPage = () => {
     useEffect(()=>{
@@ -7,6 +9,7 @@ export const BillingPage = () => {
     },[])
   return (
     <div className='px-2 my-10'>
+       <Link to='/cart'><span className='flex items-center hover:underline hover:text-blue-600 text-xs sm:text-sm my-10 font-thin px-5 sm:mx-10 md:px-20'><KeyboardBackspaceIcon className='mr-2' fontSize='medium' />Back to cart</span></Link>
         <h1 className='text-xl md:text-2xl lg:text-3xl font-heading font-medium my-5 px-5 sm:mx-10 md:px-20'>Billing Info</h1>
         <div className='flex justify-around flex-col sm:flex-row '>
         <form className='w-full px-2 max-w-[1000px]  sm:mx-4 md:px-8 lg:px-12 xl:px-16'>
