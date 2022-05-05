@@ -1,7 +1,7 @@
 import products from '../data'
 import Carousel from 'react-multi-carousel'
 import "react-multi-carousel/lib/styles.css";
-
+import {motion} from 'framer-motion'
 const responsive = {
     Bigdesktop: {
       breakpoint: { max: 3000, min: 0},
@@ -14,14 +14,14 @@ const responsive = {
 
 export const Hero = () => {
   return (
-    <div className='pb-[30px] w-full'>
+    <motion.div initial={{opacity:0,scale:0.8}} animate={{opacity:1,scale:1,transition:{duration:0.5,ease:'easeInOut'}}} exit={{opacity:0,transition:{duration:0.25,ease:'easeOut'}}} className=' w-full'>
   <Carousel
     additionalTransfrom={0}
     arrows
     removeArrowOnDeviceType={["tablet", "mobile"]}
     autoPlaySpeed={5000}
     centerMode={false}
-    className="z-[80]"
+    className="z-[0]"
     dotListClass=""
     draggable
     focusOnSelect={false}
@@ -43,13 +43,13 @@ export const Hero = () => {
          <h1 className=' text-3xl sm:text-4xl lg:text-6xl w-[80%] text-white font-bold font-heading my-1'>{el.title}</h1>
          <span className='lg:text-xl sm:text-lg w-[60%] text-base text-white my-1'>Get them now for 60% off on selected banks. <br /> <span className='font-light text-xs sm:text-sm '>Terms and conditions apply.* </span> </span>
           <span className='my-5'>
-              <button className='text-white text-xs md:text-sm lg:text-base px-2 md:px-4 py-2 mx-2 rounded-sm ring-2 ring-primary hover:ring-primaryLight hover:bg-primaryLight bg-primary'>Add to cart</button>
-              <button className='text-primaryLight text-xs md:text-sm lg:text-base px-2 md:px-4 py-2 mx-2 rounded-sm ring-primaryLight hover:ring-primary hover:text-primary ring-2'>Add to wishlist</button>
+              <button className='text-white font-medium text-xs md:text-sm lg:text-base px-2 md:px-4 py-2 mx-2 rounded-sm ring-2 ring-primary hover:ring-primaryLight hover:bg-primaryLight bg-primary'>Add to cart</button>
+              <button className='text-primaryLight font-medium text-xs md:text-sm lg:text-base px-2 md:px-4 py-2 mx-2 rounded-sm ring-primaryLight hover:ring-primary hover:text-primary ring-2'>Add to wishlist</button>
           </span>
      </div>
      </div>})}
   </Carousel>
-</div>
+</motion.div>
 
     );
 }

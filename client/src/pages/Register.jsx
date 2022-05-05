@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
@@ -6,6 +6,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL } from '../requestMethods';
+import {motion} from 'framer-motion'
 
 export const Register = () => {
     const [visiblePassword, setVisiblePassword] = useState(false);
@@ -17,6 +18,12 @@ export const Register = () => {
     const [userError, setUserError] = useState(false);
     const [genericError, setGenericError] = useState(false);
     const [successMsg, setSuccessMsg] = useState(false);
+
+    useEffect(()=>{
+      window.scrollTo(0,0)
+  },[])
+
+
     const handleSubmit = async(e) =>{
       e.preventDefault();
       const user = {
@@ -36,7 +43,7 @@ export const Register = () => {
       };
     }
   return (
-      <div className='flex bg-gradient-to-br from-slate-100 overflow-x-hidden relative justify-center h-[110vh] sm:h-[calc(100vh_-_90px)]'>
+      <motion.div initial={{opacity:0}} animate={{opacity:1,transition:{duration:0.25,ease:'easeIn'}}} exit={{opacity:0,transition:{duration:0.12,ease:'easeIn'}}} className='flex bg-gradient-to-br from-slate-100 overflow-x-hidden relative justify-center h-[110vh] sm:h-[calc(100vh_-_90px)]'>
       <div className='mx-4 mt-[5vh]'>
     <form onSubmit={handleSubmit} className='flex shadow-xl bg-white flex-col ring-primaryLight ring-2 rounded-sm p-5 sm:p-10 mx-auto' >
         <h1 className='text-2xl md:text-3xl font-heading text-center my-5 underline font-medium'>Register</h1>
@@ -69,6 +76,6 @@ export const Register = () => {
         <span className='text-sm md:text-md text-center mt-4'>Already have an account? <b className='underline ml-1 cursor-pointer'> <Link to='/login'> Login </Link></b>.</span>
     </form>
       </div>
-      </div>
+      </motion.div>
   )
 }

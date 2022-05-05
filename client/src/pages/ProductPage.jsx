@@ -2,24 +2,51 @@ import React, { useEffect, useState } from 'react'
 import { ProductImgSlider } from '../components/ProductImgSlider';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import axios from 'axios';
+import { BASE_URL } from '../requestMethods';
+import CircularProgress from '@mui/material/CircularProgress';
+import {useDispatch, useSelector} from 'react-redux'
+import { addProduct } from '../redux/cartRedux';
+import {motion} from 'framer-motion'
 
-export const ProductPage = ({category}) => {
-  const [quantity, setQuantity] = useState(1)
+
+export const ProductPage = () => {
+  const location = useLocation();
+  const [quantity, setQuantity] = useState(1);
+  const [category, setCategory] = useState([]);
+  const cart = useSelector(state=> state.cart)
+  const [data, setData] = useState(null);
+  const dispatch = useDispatch();
   useEffect(()=>{
     window.scrollTo(0,0)
-},[])
+    const fetchProduct = async() =>{
+      const product = await axios.get(BASE_URL+'products'+location.search)
+      setData(product.data.product)     
+      setCategory(product.data.product.productCategory);
+    }
+    fetchProduct();
+  },[location.search])
+  const handleClick = () => {
+    if(cart.products.includes(data.productName)){
+
+    }
+    dispatch(
+      addProduct({...data, quantity})
+    )
+  }
   return ( 
-    <div className='px-2 flex flex-col md:flex-row justify-center items-center'>
+    <motion.div initial={{opacity:0}} animate={{opacity:1,transition:{duration:0.25,ease:'easeIn'}}} exit={{opacity:0,transition:{duration:0.12,ease:'easeIn'}}} className='px-2 flex flex-col md:flex-row justify-center items-center'>
+      {data ?  <>
       <div className='m-5 md:m-2 lg:m-20 md:self-start '>
-      <ProductImgSlider  />
+      <ProductImgSlider imgs={[data.productImg]}  />
       </div>
       <div className='m-2 sm:m-5 md:m-10 lg:m-20'>
-          <span className='py-1 px-2 bg-gray-300 uppercase tracking-wide font-heading text-[10px] sm:text-xs md:text-sm'>Clothing</span>
-          <h1 className='my-4 text-xl md:text-2xl lg:text-3xl font-medium'>Black T-Shirts </h1>
-            <span className='text-xs md:text-sm text-slate-400 uppercase my-2 tracking-wide'>SKU: 5446tux9zwec44542</span>
+         { category.map(el =>  <span className='py-1 px-2 mr-2 bg-gray-300 uppercase tracking-wide font-heading text-[10px] sm:text-xs md:text-sm'>{el}</span> )}
+          <h1 className='my-4 text-xl md:text-2xl lg:text-3xl font-medium'>{data.productName}</h1>
+            <span className='text-xs md:text-sm text-slate-400 uppercase my-2 tracking-wide'>SKU: {data._id}</span>
             <p className='max-w-[400px] my-5 text-slate-600 text-sm md:text-base tracking-wide'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim itaque suscipit necessitatibus rerum incidunt ea at qui magni eos ad, aut distinctio explicabo reiciendis laboriosam quos dolorum debitis voluptatum. Ipsum enim, eum accusamus saepe eveniet eaque cupiditate dolore quidem similique, fugiat excepturi. Non, ea? Illo expedita animi ipsa quo at?
+              {data.productDescription}
             </p>
             <div className='flex justify-between items-center mt-10'>
               <div className='flex flex-col'>
@@ -33,11 +60,11 @@ export const ProductPage = ({category}) => {
                 </span>
               </div>
               <span className='flex flex-col text-lg md:text-xl lg:text-2xl text-right'>
-                $30
+                ${data.productPrice * quantity}
                 <span className='text-xs text-slate-400 md:text-sm tracking-wide mt-1'>13% VAT included*</span>
               </span>
             </div>
-            <button className='mt-8 mb-2 w-full text-xs md:text-sm lg:text-base transition-all hover:bg-primaryLight py-2 px-4 bg-primary rounded-sm font-medium text-white'>Add to Cart</button>
+            <button onClick={()=>handleClick()} className='mt-8 mb-2 w-full text-xs md:text-sm lg:text-base transition-all hover:bg-primaryLight py-2 px-4 bg-primary rounded-sm font-medium text-white'>Add to Cart</button>
             <Link to='/billing'><button className='mb-8 mt-2 w-full text-xs md:text-sm lg:text-base transition-all py-2 px-4 hover:border-primaryLight hover:text-primaryLight border-primary border-2 font-medium text-primary rounded-sm'>Checkout</button></Link>
             <div>
               <h2 className='font-medium text-sm md:text-base lg:text-lg my-5'>Specifications</h2>
@@ -55,11 +82,16 @@ export const ProductPage = ({category}) => {
               </div>
               <div className='flex justify-between font-medium tracking-wide text-xs md:text-sm my-10'>
                 <span className='uppercase text-slate-400 '>in stock</span>
-                <span>Yes</span>
+                <span>{data.productStock ? 'Yes' : 'No'}</span>
               </div>
             </div>
       </div>
-    </div>
+          </>      : <div className='w-screen h-[95vh] flex items-center justify-center'>
+                    <CircularProgress sx={{color:'#FF9100'}} />
+                     </div> 
+}
+            
+    </motion.div>
 
 
 

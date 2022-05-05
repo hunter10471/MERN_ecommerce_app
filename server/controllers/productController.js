@@ -16,10 +16,11 @@ const getProducts = async(req,res) =>{
     try {
         const id = req.query.id;
         if(id){
-            const product = await Product.findById(req.params.id);
+            const product = await Product.findById(id);
             if(!product) return res.status(404).json('The product with the given ID does not exists.');
             res.status(200).json({message:'Following product has been fetched successfully: ',product:product});
-        }else{
+        }
+        else{
             const products = await Product.find().sort({_id:-1});
             if(!products) return res.status(404).json('No products found.');
             res.status(200).json({message:'Following products have been fetched: ',products:products});
@@ -30,6 +31,21 @@ const getProducts = async(req,res) =>{
     }
 };
 
+const searchProducts =async(req,res) =>{
+    try {
+        const name = req.query.name;
+        if(name){ 
+            const product = await Product.find({productName: new RegExp(name, 'i')}); 
+            if(!product) return res.status(404).json('The product with the given name does not exists.');
+            res.status(200).json({message:'Following product has been fetched successfully: ',product:product});
+        }
+    }
+    catch (error) {
+        logger.error({message:'An error occured while fetching the products.',error:error});
+        res.status(500).json({message:'An error occured while fetching the products.', error:error});
+    }
+
+};
 
 
 const updateProduct = async(req,res)=>{
@@ -88,5 +104,6 @@ module.exports = {
     getProductsByCategory,
     addProduct,
     deleteProduct,
-    updateProduct
+    updateProduct,
+    searchProducts
 };

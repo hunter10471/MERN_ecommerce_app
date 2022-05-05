@@ -2,13 +2,15 @@ import React, { useEffect } from 'react'
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { Link } from 'react-router-dom';
+import {motion} from 'framer-motion'
+
 
 export const BillingPage = () => {
     useEffect(()=>{
         window.scrollTo(0,0)
     },[])
   return (
-    <div className='px-2 my-10'>
+    <motion.div initial={{opacity:0}} animate={{opacity:1,transition:{duration:0.25,ease:'easeIn'}}} exit={{opacity:0,transition:{duration:0.12,ease:'easeIn'}}} className='px-2 my-10'>
        <Link to='/cart'><span className='flex items-center hover:underline hover:text-blue-600 text-xs sm:text-sm my-10 font-thin px-5 sm:mx-10 md:px-20'><KeyboardBackspaceIcon className='mr-2' fontSize='medium' />Back to cart</span></Link>
         <h1 className='text-xl md:text-2xl lg:text-3xl font-heading font-medium my-5 px-5 sm:mx-10 md:px-20'>Billing Info</h1>
         <div className='flex justify-around flex-col sm:flex-row '>
@@ -83,6 +85,6 @@ export const BillingPage = () => {
                 </div>
             </div>
          </div>
-        </div>
+        </motion.div>
   )
 }

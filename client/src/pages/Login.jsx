@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -8,6 +8,8 @@ import {useDispatch, useSelector } from 'react-redux'
 import { login } from '../redux/apiCalls';
 import axios from 'axios';
 import { BASE_URL } from '../requestMethods';
+import {motion} from 'framer-motion'
+
 
 export const Login = () => {
     const [visiblePassword, setVisiblePassword] = useState(false)
@@ -20,6 +22,10 @@ export const Login = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    },[])
 
     const onSubmit = async(e) =>{
         e.preventDefault();
@@ -49,7 +55,7 @@ export const Login = () => {
 }
     
   return (
-      <>
+      <motion.div initial={{opacity:0}} animate={{opacity:1,transition:{duration:0.25,ease:'easeIn'}}} exit={{opacity:0,transition:{duration:0.12,ease:'easeIn'}}}>
       <div className='flex bg-gradient-to-br from-slate-100 overflow-x-hidden relative justify-center h-[110vh] sm:h-[calc(100vh_-_90px)]'>
       <div className='mx-4 w-full mt-[5vh]'>
     <form onSubmit={onSubmit} className='flex shadow-xl min-w-[200px] max-w-[350px]  bg-white flex-col ring-primaryLight ring-2 rounded-sm p-5 sm:p-10 mx-auto' >
@@ -74,6 +80,6 @@ export const Login = () => {
     </form>
       </div>
       </div>
-        </>
+        </motion.div>
   )
 }
