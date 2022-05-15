@@ -12,7 +12,7 @@ const cartSlice = createSlice({
         const found  = state.products.some(el => el.productName === action.payload.productName)        
         if(found) state.products.find((el,index)=>{
             if(el.productName === action.payload.productName){
-                state.products[index].quantity += 1;
+                state.products[index].quantity += 1 || action.payload.quantity ;
                 state.quantity += 1;
                 state.total += action.payload.productPrice;
                 return null;

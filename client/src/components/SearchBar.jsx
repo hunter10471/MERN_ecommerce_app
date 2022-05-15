@@ -18,7 +18,7 @@ export const SearchBar = () => {
         fetchData();
       },[value])
   return (
-    <div  onFocus={()=>setWidth(true)} onBlur={()=>{setWidth(false)}} className={`z-[100] absolute sm:left-[180px] md:left-[200px] lg:left-[250px] xl:left-[300px] top-[25%]  hidden sm:block transition-all duration-200 ease-in-out ${width ? 'w-4/12' : 'w-2/12'}`}>
+    <div  onFocus={()=>setWidth(true)} onBlur={()=>{setWidth(false)}} className={`z-[100] absolute sm:left-[180px] md:left-[200px] lg:left-[250px] xl:left-[300px] top-[25%]  hidden lg:block transition-all duration-200 ease-in-out ${width ? 'w-4/12' : 'w-2/12'}`}>
     <input onChange={(e)=>setValue(e.target.value)} type="text" className='w-full p-2 peer focus:outline-none  focus:shadow-sm peer-hover:border-primary  border-b-2 border-primaryLight hover:border-primary ' placeholder='Search..' />
     <span className='p-2 absolute text-white peer peer-focus:bg-primary peer-hover:bg-primary bottom-0 peer-focus:shadow-lg  bg-primaryLight hover:bg-primary cursor-pointer left-[100%]'><SearchIcon/></span>
     <div  className={` ${value === '' ? 'hidden' : 'flex'} flex-col justify-center w-full absolute bg-white border-2 rounded z-[100]  max-h-[50vh] overflow-y-auto p-2 pb-0`}>

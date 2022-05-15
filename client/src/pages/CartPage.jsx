@@ -9,6 +9,7 @@ import {motion} from 'framer-motion'
 export const CartPage = () => {
     const dispatch = useDispatch();
     const cart = useSelector(state=>state.cart)
+    const user = useSelector(state=>state.user.currentUser)
     useEffect(()=>{
         window.scrollTo(0,0)
     },[])
@@ -31,7 +32,7 @@ export const CartPage = () => {
                 </div>
                 <div className='flex flex-col p-4 lg:p-6  bg-gray-100 mt-2'>
                     <span className='mb-2 text-sm text-slate-400 flex justify-between'>Total Price  </span>
-                    <span className='font-medium text-sm flex justify-between items-center '>${cart.total} <Link to='/billing'><button className='py-2 px-6 transition-all bg-primary hover:bg-primaryLight text-white rounded-sm'>Checkout</button> </Link></span>
+                    <span className='font-medium text-sm flex justify-between items-center '>${cart.total + 20} <Link to={user ? '/billing' : '/login'}><button className='py-2 px-6 transition-all bg-primary hover:bg-primaryLight text-white rounded-sm'>Checkout</button> </Link></span>
                 </div>
             </div>
         </div>

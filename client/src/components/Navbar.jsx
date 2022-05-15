@@ -39,7 +39,7 @@ export const Navbar = () => {
         <MenuOutlinedIcon/>
         </div>
         <div className=' w-full mx-4 lg:w-auto my-10 lg:my-0 flex items-center flex-col lg:flex-row '>
-        {user && <div className='cursor-pointer lg:mr-5 xl:mr-10 lg:ml-5 lg:mb-0 mb-20 flex items-center font-medium capitalize'> <img className='h-[32px] w-[32px] md:h-[42px] mx-3 md:w-[42px] rounded-[50%] object-cover' src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" /> {user.user.username}</div> }
+        {user && <div className='cursor-pointer lg:mr-5 xl:mr-10 lg:ml-5 lg:mb-0 mb-20 flex items-center font-medium capitalize'> <img className='h-[32px] w-[32px] md:h-[42px] mx-3 md:w-[42px] rounded-[50%] object-cover' src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />{user.user.others.username}</div> }
         <div className='mb-10 lg:mb-0 lg:mx-5 xl:mx-10  w-full flex items-center justify-center  lg:w-auto cursor-pointer text-2xl lg:text-3xl relative'>
         <Link to='/cart'>
             <ShoppingCartOutlinedIcon fontSize='' /> 

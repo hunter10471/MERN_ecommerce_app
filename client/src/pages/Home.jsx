@@ -14,6 +14,7 @@ import { PolicyCard } from '../components/PolicyCard';
 import { Subscribe } from '../components/Subscribe';
 import { CardSkeleton } from '../components/CardSkeleton';
 import { motion } from 'framer-motion'
+import { TakeToTop } from '../components/TakeToTop';
 import CategoryIcon from '@mui/icons-material/Category';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import PolicyIcon from '@mui/icons-material/Policy';
@@ -68,6 +69,7 @@ export const Home = () => {
   return (
     <motion.div initial={{opacity:0}} animate={{opacity:1,transition:{duration:0.25,ease:'easeIn'}}} exit={{opacity:0,transition:{duration:0.12,ease:'easeIn'}}}  >
     <Hero/>
+    <TakeToTop/>
     <div className='overflow-x-hidden '>
       { category ? <>
        <motion.h1 initial={{x:200,opacity:0}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration:1, ease:'backInOut'}} exit={{x:200, opacity:0}} className='flex  items-center font-heading font-extrabold border-b-4 tracking-wide border-primary  text-xl md:text-2xl mt-0 mb-5 p-2 sm:p-3 md:p-4 lg:p-5 justify-center lg:text-3xl text-white bg-primaryLight rounded capitalize '>{category} <CategoryIcon sx={{fontSize:25}} className='ml-2' /></motion.h1> 
@@ -114,7 +116,7 @@ export const Home = () => {
             </div>       
             }
       </motion.div>
-      <motion.h1 initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}} transition={{duration:2, ease:'backInOut'}} exit={{opacity:0}} className='flex items-center justify-center font-heading text-center my-8 md:my-10 font-extrabold w-full border-b-4 p-2 sm:p-3 md:p-4 lg:p-5 rounded bg-slate-700 border-slate-800 text-white tracking-wide text-xl md:text-2xl lg:text-3xl '>Our Policies <PolicyIcon className='ml-2 text-primary' sx={{fontSize:30}} /> </motion.h1>
+      <motion.h1 initial={{opacity:0}} whileInView={{opacity:1}} viewport={{once:true}} transition={{duration:1, ease:'backInOut'}} exit={{opacity:0}} className='flex items-center justify-center font-heading text-center my-8 md:my-10 font-extrabold w-full border-b-4 p-2 sm:p-3 md:p-4 lg:p-5 rounded bg-slate-700 border-slate-800 text-white tracking-wide text-xl md:text-2xl lg:text-3xl '>Our Policies <PolicyIcon className='ml-2 text-primary' sx={{fontSize:30}} /> </motion.h1>
     <div className='flex flex-wrap justify-evenly '>  
           <PolicyCard title={'Fast Delivery Guranteed'} img={packageSvg} />
           <PolicyCard title={'100% Branded Products'} img={tickSvg} />

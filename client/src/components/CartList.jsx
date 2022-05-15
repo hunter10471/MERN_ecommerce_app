@@ -4,8 +4,11 @@ import CloseIcon from '@mui/icons-material/Close';
 import {useDispatch, useSelector} from 'react-redux'
 import {addProduct, removeOneProduct, removeProduct} from '../redux/cartRedux'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../requestMethods';
 
 export const CartList = () => {
+    const navigate = useNavigate()
     const cart = useSelector(state=> state.cart)
     const dispatch = useDispatch()
     const handleRemove = (product) =>{
@@ -29,9 +32,9 @@ export const CartList = () => {
        { cart.products.length !== 0  ? cart.products.map(el => {
         return <tr>
             <td className='flex sm:p-4 lg:p-6 justify-center sm:flex-row flex-col items-center'><img className='rounded-[50%] object-cover w-[60px] h-[60px] lg:w-[80px] lg:h-[80px]' src={el.productImg} alt="product" />
-            <div className='ml-4 flex flex-col font-medium text-sm md:text-base lg:text-lg '>
-            {el.productName}
-             <span className='text-slate-400 text-[10px] sm:text-xs md:text-sm'>SKU : {el._id}</span>
+            <div className='ml-4 flex flex-col font-medium text-sm md:text-base lg:text-lg cursor-pointer hover:text-gray-700'>
+             <span onClick={()=>navigate('/product?id='+el._id)}> {el.productName} </span>
+             <span className='text-slate-400 text-[10px] sm:text-xs md:text-sm mb-4'>SKU : {el._id}</span>
             </div>  
             </td>
             <td className='text-center text-sm md:text-base lg:text-lg sm:p-4 lg:p-6'>

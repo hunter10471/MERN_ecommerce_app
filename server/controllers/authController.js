@@ -98,7 +98,7 @@ const login = async (req,res) =>{
     const originalPassword = hashedPassword.toString(cryptojs.enc.Utf8);
     if(originalPassword !== req.body.password) return res.status(403).json({ isLogin: false, message:'Incorrect credentials.'});
     const token = generateAuthToken(existingUser);
-    res.status(200).json({ isLogin: true, message:'User login Successful!', accessToken: token, user:{_id:others._id,username:others.username}});
+    res.status(200).json({ isLogin: true, message:'User login Successful!', accessToken: token, user: others});
 
 };
 

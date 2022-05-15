@@ -2,7 +2,6 @@ import { Navbar } from "./components/Navbar";
 import { BrowserRouter } from "react-router-dom";
 import { Footer } from "./components/Footer";
 import { AnimatedRoutes } from "./components/AnimatedRoutes"
-import { TakeToTop } from './components/TakeToTop';
 
 
 function App() {
@@ -11,7 +10,6 @@ function App() {
       <BrowserRouter>
       <Navbar />
       <AnimatedRoutes/>
-      <TakeToTop/>
       <Footer/>
       </BrowserRouter>
     </div>

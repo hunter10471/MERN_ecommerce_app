@@ -3,9 +3,11 @@ import CreditCardIcon from '@mui/icons-material/CreditCard';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { Link } from 'react-router-dom';
 import {motion} from 'framer-motion'
+import { useSelector } from 'react-redux';
 
 
 export const BillingPage = () => {
+    const cart = useSelector(state=>state.cart)
     useEffect(()=>{
         window.scrollTo(0,0)
     },[])
@@ -76,12 +78,12 @@ export const BillingPage = () => {
         <div className='flex flex-col mx-auto sm:mx-10  lg:mr-5 my-10 lg:my-0 md:max-w-[300px] lg:max-w-[400px] w-[80%]'>
                 <div className='flex flex-col p-4 lg:p-6 bg-gray-100'>
                     <h2 className='font-medium text-base md:text-lg lg:text-xl'>Order Summary</h2>
-                    <span className='my-4 text-sm text-slate-400 flex justify-between'>Item(s) total <span className='text-black font-medium'>2</span> </span>
+                    <span className='my-4 text-sm text-slate-400 flex justify-between'>Item(s) total <span className='text-black font-medium'>{cart.quantity}</span> </span>
                     <span className=' text-slate-400 text-sm flex justify-between '>VAT (21%)  <span className='text-black font-medium'>+ $20</span></span>
                 </div>
                 <div className='flex flex-col p-4 lg:p-6  bg-gray-100 mt-2'>
                     <span className='mb-2 text-sm text-slate-400 flex'>Total Price </span>
-                    <span className='font-medium text-sm flex items-center justify-between '>$80 <button className='py-2 px-6 text-sm sm:text-base transition-all duration-200 bg-primary hover:bg-primaryLight text-white rounded-sm'>Pay</button></span>
+                    <span className='font-medium text-sm flex items-center justify-between '>${cart.total + 20}<button className='py-2 px-6 text-sm sm:text-base transition-all duration-200 bg-primary hover:bg-primaryLight text-white rounded-sm'>Pay</button></span>
                 </div>
             </div>
          </div>
