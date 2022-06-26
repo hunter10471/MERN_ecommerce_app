@@ -20,7 +20,7 @@ export const SnackBar = ({children}) => {
 
   return (
     <div>
-      <button onClick={handleClick}>{children}</button>
+      <button className='w-full' onClick={handleClick}>{children}</button>
       <Snackbar
         open={open}
         autoHideDuration={8000}

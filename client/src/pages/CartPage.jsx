@@ -27,12 +27,13 @@ export const CartPage = () => {
         <div className='flex flex-col my-10 lg:my-0 self-center max-w-[400px] w-[80%] mx-6'>
                 <div className='flex flex-col p-4 lg:p-6 bg-gray-100'>
                     <h2 className='font-medium text-base md:text-lg lg:text-xl'>Order Summary</h2>
-                    <span className='my-4 text-sm text-slate-400 flex justify-between'>Item(s) total <span className='text-black font-medium'>{cart.quantity}</span> </span>
-                    <span className=' text-slate-400 text-sm flex justify-between '>VAT (21%)  <span className='text-black font-medium'>+ $20</span></span>
+                    <span className='my-2 text-sm text-slate-400 flex justify-between'>Item(s) total <span className='text-black font-medium'>{cart.quantity}</span> </span>
+                    <span className='my-2 text-sm text-slate-400 flex justify-between'>Price <span className='text-black font-medium'>${cart.total}</span> </span>
+                    <span className='my-2 text-slate-400 text-sm flex justify-between '>VAT (21%)  <span className='text-black font-medium'>+ ${cart.total * 21/100}</span></span>
                 </div>
                 <div className='flex flex-col p-4 lg:p-6  bg-gray-100 mt-2'>
                     <span className='mb-2 text-sm text-slate-400 flex justify-between'>Total Price  </span>
-                    <span className='font-medium text-sm flex justify-between items-center '>${cart.total + 20} <Link to={user ? '/billing' : '/login'}><button className='py-2 px-6 transition-all bg-primary hover:bg-primaryLight text-white rounded-sm'>Checkout</button> </Link></span>
+                    <span className='font-medium text-sm flex justify-between items-center '>${cart.total + cart.total* 21/100} <Link to={user ? '/billing' : '/login'}><button className='py-2 px-6 transition-all bg-primary hover:bg-primaryLight text-white rounded-sm'>Checkout</button> </Link></span>
                 </div>
             </div>
         </div>

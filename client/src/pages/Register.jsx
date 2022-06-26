@@ -43,7 +43,7 @@ export const Register = () => {
       };
     }
   return (
-      <motion.div initial={{opacity:0}} animate={{opacity:1,transition:{duration:0.25,ease:'easeIn'}}} exit={{opacity:0,transition:{duration:0.12,ease:'easeIn'}}} className='flex bg-gradient-to-br from-slate-100 my-5 overflow-x-hidden relative justify-center h-[110vh] sm:h-[calc(100vh_-_90px)]'>
+      <motion.div initial={{opacity:0}} animate={{opacity:1,transition:{duration:0.25,ease:'easeIn'}}} exit={{opacity:0,transition:{duration:0.12,ease:'easeIn'}}} className='flex bg-gradient-to-br from-slate-100 overflow-x-hidden relative justify-center h-[110vh] sm:h-[calc(100vh_-_90px)]'>
       <div className='mx-4 mt-[5vh]'>
     <form onSubmit={handleSubmit} className='flex shadow-xl bg-white flex-col ring-primaryLight ring-2 rounded-sm p-5 sm:p-10 mx-auto' >
         <h1 className='text-2xl md:text-3xl font-heading text-center my-5 underline font-medium'>Register</h1>

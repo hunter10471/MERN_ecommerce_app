@@ -19,8 +19,7 @@ const verifyToken = (req, res, next)=>{
     const authHeader = req.headers.token;
     if(authHeader){
         try {
-            const token = authHeader.split(' ')[1];
-            jwt.verify(token, process.env.JWT_SECRET_KEY, (err, user)=>{
+            jwt.verify(authHeader, process.env.JWT_SECRET_KEY, (err, user)=>{
                 if(err) return res.status(403).json('Invalid token.');
                 req.user = user;
                 next();
@@ -53,7 +52,7 @@ const verifyTokenAndAdmin = (req, res, next) =>{
 
 const verifyTokenAndAuth = (req, res, next) =>{
     verifyToken(req, res, ()=>{
-        if(req.user.username === req.body.username || req.user.isAdmin){
+        if(req.user._id === req.params.id || req.user.isAdmin){
             try {
                 next();
             } catch (error) {

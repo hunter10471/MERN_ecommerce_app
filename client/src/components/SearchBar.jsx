@@ -4,7 +4,7 @@ import axios from 'axios';
 import { BASE_URL } from '../requestMethods';
 import { Link } from 'react-router-dom';
 import Rating from '@mui/material/Rating';
-
+import CloseIcon from '@mui/icons-material/Close';
 
 export const SearchBar = () => {
     const [data, setData] = useState([]);
@@ -17,9 +17,12 @@ export const SearchBar = () => {
         }
         fetchData();
       },[value])
-  return (
-    <div  onFocus={()=>setWidth(true)} onBlur={()=>{setWidth(false)}} className={`z-[100] absolute sm:left-[180px] md:left-[200px] lg:left-[250px] xl:left-[300px] top-[25%]  hidden lg:block transition-all duration-200 ease-in-out ${width ? 'w-4/12' : 'w-2/12'}`}>
-    <input onChange={(e)=>setValue(e.target.value)} type="text" className='w-full p-2 peer focus:outline-none  focus:shadow-sm peer-hover:border-primary  border-b-2 border-primaryLight hover:border-primary ' placeholder='Search..' />
+    return (
+    <div  className={`z-[100] absolute sm:left-[180px] md:left-[200px] lg:left-[250px] xl:left-[300px] top-[25%]  hidden lg:block transition-all duration-200 ease-in-out ${width ? 'w-4/12' : 'w-2/12'}`}>
+    <div  onFocus={()=>setWidth(true)} onBlur={()=>{setWidth(false)}}>
+    <input  onChange={(e)=>setValue(e.target.value)} type="text" className='w-full p-2 peer focus:outline-none  focus:shadow-sm peer-hover:border-primary  border-b-2 border-primaryLight hover:border-primary ' placeholder='Search..' />
+    <span  onClick={()=>setValue('')} className={` ${value==='' ? 'hidden' : 'absolute'} right-[4px] bottom-[10px] text-slate-600 cursor-pointer `}><CloseIcon/></span>
+    </div>
     <span className='p-2 absolute text-white peer peer-focus:bg-primary peer-hover:bg-primary bottom-0 peer-focus:shadow-lg  bg-primaryLight hover:bg-primary cursor-pointer left-[100%]'><SearchIcon/></span>
     <div  className={` ${value === '' ? 'hidden' : 'flex'} flex-col justify-center w-full absolute bg-white border-2 rounded z-[100]  max-h-[50vh] overflow-y-auto p-2 pb-0`}>
        { data.product ? ( data.product.length > 0 ? data.product.map(el => {

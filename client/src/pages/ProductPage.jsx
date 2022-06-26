@@ -10,6 +10,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import { addProduct } from '../redux/cartRedux';
 import {motion} from 'framer-motion'
 import { SnackBar } from '../components/SnackBar';
+import { SuggestedProducts } from '../components/SuggestedProducts';
 
 
 export const ProductPage = () => {
@@ -37,6 +38,7 @@ export const ProductPage = () => {
     )
   }
   return ( 
+    <>
     <motion.div initial={{opacity:0}} animate={{opacity:1,transition:{duration:0.25,ease:'easeIn'}}} exit={{opacity:0,transition:{duration:0.12,ease:'easeIn'}}} className='px-2 my-5 flex flex-col lg:flex-row justify-center items-center'>
       {data ?  <>
       <div className='m-5 md:m-6 lg:m-8 lg:self-start '>
@@ -65,7 +67,7 @@ export const ProductPage = () => {
                 <span className='text-xs text-slate-400 md:text-sm tracking-wide mt-1'>13% VAT included*</span>
               </span>
             </div>
-            <button onClick={()=>handleClick()} className='mt-8 mb-2 w-full text-xs md:text-sm lg:text-base transition-all hover:bg-primaryLight py-2 px-4 bg-primary rounded-sm font-medium text-white'>Add to Cart</button>
+            <span></span><SnackBar><button onClick={()=>handleClick()} className='mt-8 mb-2 w-full text-xs md:text-sm lg:text-base transition-all hover:bg-primaryLight py-2 px-4 bg-primary rounded-sm font-medium text-white'>Add to Cart</button></SnackBar>
             <Link to='/billing'><button className='mb-8 mt-2 w-full text-xs md:text-sm lg:text-base transition-all py-2 px-4 hover:border-primaryLight hover:text-primaryLight border-primary border-2 font-medium text-primary rounded-sm'>Checkout</button></Link>
             <div>
               <h2 className='font-medium text-sm md:text-base lg:text-lg my-5'>Specifications</h2>
@@ -91,10 +93,9 @@ export const ProductPage = () => {
                     <CircularProgress sx={{color:'#FF9100'}} />
                      </div> 
 }
-            
     </motion.div>
-
-
+    <SuggestedProducts category={category} />
+    </>
 
     )
 }

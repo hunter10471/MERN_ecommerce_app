@@ -8,6 +8,9 @@ import { Login } from '../pages/Login'
 import { ProductPage } from '../pages/ProductPage'
 import { Register } from '../pages/Register'
 import { AnimatePresence } from 'framer-motion'
+import { ErrorPage } from '../pages/ErrorPage'
+import { SuccessPage } from '../pages/SuccessPage'
+import { FailurePage } from '../pages/FailurePage'
 
 export const AnimatedRoutes = () => {
     const user = useSelector((state)=>state.user.currentUser);
@@ -21,6 +24,9 @@ export const AnimatedRoutes = () => {
     <Route path="/billing" element={<BillingPage/>} />
     <Route path="/register" element={ user ? <Navigate replace to='/' /> : <Register/>} />
     <Route path="/login" element={user ? <Navigate replace to='/' /> :<Login/>}/>
+    <Route path="/success" element={user ? <SuccessPage/> : <Navigate replace to='/error' /> }/>
+    <Route path="/failure" element={user ? <FailurePage/> : <Navigate replace to='/error' /> }/>
+    <Route path="*" element={<ErrorPage/>}/>
     </Routes>
     </AnimatePresence>
   )

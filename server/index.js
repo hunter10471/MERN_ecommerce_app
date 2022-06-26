@@ -7,11 +7,11 @@ const userRoute = require('./routes/users');
 const orderRoute = require('./routes/orders');
 const productRoute = require('./routes/products');
 const cartRoute = require('./routes/carts');
+const paymentRoute = require('./routes/stripe');
 const logger = require('./utils/logger');
-
 require('./config/dbConnection');
-dotenv.config();
 
+dotenv.config();
 app.use(cors());
 app.use(epxress.json());
 app.use('/api/auth', authRoute);
@@ -19,6 +19,7 @@ app.use('/api/users', userRoute);
 app.use('/api/products', productRoute);
 app.use('/api/orders', orderRoute);
 app.use('/api/carts', cartRoute);
+app.use('/api/payment', paymentRoute);
 
 
 

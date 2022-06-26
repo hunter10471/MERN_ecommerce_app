@@ -5,23 +5,37 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    products:[
-        {
-            productId: String,
-            quantity:{
-                type: Number,
-                default: 1
-            },
-            price: Number
-        }
-    ],
+    products:{
+        type: Array,
+        required: true
+    },
     amount:{
         type: Number,
         required: true
     },
-    address:{
+    billingAddress:{
         type: String,
         required: true
+    },
+    city:{
+        type: String,
+        required: true
+    },
+    country:{
+        type: String,
+        required: true
+    },
+    zipCode:{
+        type:String,
+        required: true
+    },
+    vatNumber:{
+        type:String,
+        default: null
+    },
+    companyName:{
+        type: String, 
+        default: null
     },
     paymentMode:{
         type:String,

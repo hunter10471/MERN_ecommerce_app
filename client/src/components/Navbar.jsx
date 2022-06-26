@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import {useDispatch} from 'react-redux'
 import {logout} from '../redux/apiCalls'
 import { SearchBar } from './SearchBar';
+import CloseOutlined from '@mui/icons-material/CloseOutlined';
 
 
 
@@ -21,12 +22,17 @@ const Button = ({type,text}) => {
 
 
 export const Navbar = () => {
-  const user = useSelector(state=>state.user.currentUser);
+  const user = useSelector(state=>state.user.currentUser)
   const cart = useSelector(state=>state.cart)
   const [toggle, setToggle] = useState(false)
+  const [logoutModal, setLogoutModal] = useState(false)
   const dispatch = useDispatch();
   const handleLogout = () =>{
     logout(dispatch);
+    setLogoutModal(true);
+    setTimeout(()=>{
+     setLogoutModal(false)
+    },5000)
   };
 
 
@@ -39,7 +45,7 @@ export const Navbar = () => {
         <MenuOutlinedIcon/>
         </div>
         <div className=' w-full mx-4 lg:w-auto my-10 lg:my-0 flex items-center flex-col lg:flex-row '>
-        {user && <div className='cursor-pointer lg:mr-5 xl:mr-10 lg:ml-5 lg:mb-0 mb-20 flex items-center font-medium capitalize'> <img className='h-[32px] w-[32px] md:h-[42px] mx-3 md:w-[42px] rounded-[50%] object-cover' src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />{user.user.others.username}</div> }
+        {user && <div className='cursor-pointer lg:mr-5 xl:mr-10 lg:ml-5 lg:mb-0 mb-20 flex items-center font-medium capitalize'> <img className='h-[32px] w-[32px] md:h-[42px] mx-3 md:w-[42px] rounded-[50%] object-cover' src={ user.user.avatar || "https://as1.ftcdn.net/v2/jpg/03/53/11/00/1000_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg"} alt="" />{user.user.username}</div> }
         <div className='mb-10 lg:mb-0 lg:mx-5 xl:mx-10  w-full flex items-center justify-center  lg:w-auto cursor-pointer text-2xl lg:text-3xl relative'>
         <Link to='/cart'>
             <ShoppingCartOutlinedIcon fontSize='' /> 
@@ -50,6 +56,6 @@ export const Navbar = () => {
         <Link to='/login'> <Button text={'Login'} type={'login'}/> </Link> </>) }
         </div>
     </div>
-    </div>
+    { logoutModal && <span className='bg-green-300 border-green-500 border-2 py-2 px-6 rounded-md text-xs mb-2 md:text-sm text-center absolute bottom-0 right-[40%]  '>Logged out successfully. <CloseOutlined onClick={()=>setLogoutModal(false)} fontSize='' className='absolute top-1 right-1 cursor-pointer' /></span>}    </div>
   )
 }

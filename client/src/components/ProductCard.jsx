@@ -20,7 +20,7 @@ export const ProductCard = ({img, discount, title, price, rating, category = [],
         <span className='mr-2 hover:text-gray-600 hover:cursor-pointer tracking-tight '>{title}</span>
         <span className='flex flex-col justify-end  sm:ml-auto font-[500] text-primary text-right'>
           <span> ${discount ? price - (price * discount) / 100 : price} </span> 
-          <span className='line-through decoration-[2px]  font-[400] text-sm sm:text-base md:text-lg lg:text-xl text-right text-black'>${price}</span>
+          <span className='line-through decoration-[2px]  font-[400] text-xs sm:text-sm md:text-base lg:text-lg text-right text-stone-700'>${price}</span>
           </span>
           </h1> 
           </Link>

@@ -17,8 +17,7 @@ export const Login = () => {
     const [password, setPassword] = useState('');
     const [userError, setUserError] = useState(false)
     const [genericError, setGenericError] = useState(false)
-
-    const {isFetching} = useSelector((state)=>state.user);
+    const {isFetching} = useSelector((state)=>state.user)
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -26,6 +25,8 @@ export const Login = () => {
     useEffect(()=>{
         window.scrollTo(0,0)
     },[])
+
+
 
     const onSubmit = async(e) =>{
         e.preventDefault();
@@ -73,7 +74,7 @@ export const Login = () => {
         <input className=' w-[16px] h-[20px] cursor-pointer' type="checkbox" name="remember" id="" />
         <span className='text-sm md:text-md ml-2 '>Remember me</span>
         </div>
-        <span className='text-sm md:text-md mb-2'>Forgot your password ? <u className='font-medium cursor-pointer'>Recover</u>.</span>
+        <span className='text-sm md:text-md mb-2'>Forgot your password ? <u className='font-medium cursor-pointer'>Recover</u></span>
         <button disabled={isFetching} className='disabled:hover:bg-primary disabled:cursor-wait px-2 sm:px-4 py-2 mt-4 bg-primary hover:bg-primaryLight text-sm md:text-md '> { isFetching ? <span className='flex items-center justify-center'> <LoadingAnimation/> </span> : <span className='flex items-center justify-center'> <LockOutlinedIcon className='mr-1' fontSize='' /> Login </span> }</button>
         <div className='w-full flex justify-center mt-4'><div id="my-signin2" data-onsuccess="onSignIn"></div></div>
         <span className='text-sm md:text-md text-center mt-4'>Don't have an account? <b className='underline ml-1 cursor-pointer'> <Link to='/register'>Register </Link> </b>.</span>

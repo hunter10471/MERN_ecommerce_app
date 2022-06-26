@@ -1,3 +1,4 @@
+import React from 'react';
 import products from '../data'
 import Carousel from 'react-multi-carousel'
 import "react-multi-carousel/lib/styles.css";
@@ -49,6 +50,5 @@ export const Hero = () => {
      </div>})}
   </Carousel>
 </motion.div>
-
     );
 }
