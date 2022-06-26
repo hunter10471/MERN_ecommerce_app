@@ -8,4 +8,5 @@ router.put('/:id', verifyTokenAndAuth, updateUser);
 router.delete('/:id', verifyTokenAndAuth, deleteUser);
 
 
+
 module.exports = router;

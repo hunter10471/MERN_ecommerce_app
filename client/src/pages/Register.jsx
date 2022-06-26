@@ -50,17 +50,17 @@ export const Register = () => {
         {userError && <span className='bg-red-300 border-red-500 border-2 py-2 px-6 rounded-md text-xs mb-2 md:text-sm text-center relative'>User already exists with the following username or email. <CloseOutlinedIcon onClick={()=>setUserError(false)} fontSize='' className='absolute top-1 right-1 cursor-pointer' /> </span>}
         {genericError && <span className='bg-red-300 py-2 px-6 text-xs border-red-500 border-2 rounded-md mb-2 md:text-sm text-center relative'>An error occured with your request, please try again.  <CloseOutlinedIcon onClick={()=>setGenericError(false)} fontSize='' className='absolute top-1 right-1 cursor-pointer' /></span>}
         {successMsg && <span className='bg-green-300 border-green-500 border-2 py-2 px-6 rounded-md text-xs mb-2 md:text-sm text-center relative'>Account successfully created, please login.  <CloseOutlinedIcon onClick={()=>setSuccessMsg(false)} fontSize='' className='absolute top-1 right-1 cursor-pointer' /></span>}
-        <label className='text-sm md:text-md' htmlFor="">Username</label>
+        <label className='text-sm md:text-md'>Username</label>
         <input required onChange={(e)=>setUsername(e.target.value)} className='placeholder:italic hover:bg-slate-100 transition-all duration-200 border-2 hover:border-blue-400 my-2 sm:my-4 text-sm md:text-md  px-2 sm:px-4 min-w-[200px] py-2 focus:outline-none focus:border-blue-400 ring-2 ring-transparent' type="text" placeholder='Username' />
-        <label className='text-sm md:text-md' htmlFor="">Email</label>
+        <label className='text-sm md:text-md'>Email</label>
         <input type='email'  required onChange={(e)=>setEmail(e.target.value)} className='placeholder:italic hover:bg-slate-100 transition-all duration-200 border-2 hover:border-blue-400 my-2 sm:my-4 text-sm md:text-md  px-2 sm:px-4 min-w-[200px] py-2 focus:outline-none focus:border-blue-400 ring-2 ring-transparent' placeholder='Email' />
-        <label className='text-sm md:text-md' htmlFor="">Password</label>
+        <label className='text-sm md:text-md'>Password</label>
         <div className='relative'>
         <span  onClick={()=>setVisiblePassword(!visiblePassword)} className='absolute right-4 bottom-[0.85rem] sm:bottom-[1.4rem]  cursor-pointer text-gray-500 '>{visiblePassword===true ? <VisibilityOffIcon/> : <VisibilityIcon/>}</span>
         <input required onChange={(e)=>setPassword(e.target.value)} className='placeholder:italic hover:bg-slate-100 transition-all duration-200 w-full border-2 hover:border-blue-400 my-2 sm:my-4 text-sm md:text-md  px-2 sm:px-4 min-w-[200px] py-2 focus:outline-none focus:border-blue-400 ring-2 ring-transparent' type={visiblePassword === true ? 'text' : 'password'} placeholder='Password' />
         </div>
         <div className='flex items-center text-slate-600 text-[10px] mb-4 md:text-[14px]'> <LockIcon fontSize='' /> <span className='ml-1 sm:mt-[3px]' >Password must be longer than 8 characters. </span> </div>
-        <label className='text-sm md:text-md' htmlFor="">Confirm Password</label>
+        <label className='text-sm md:text-md'>Confirm Password</label>
         <div className='relative'>
         <span onClick={()=>setVisiblePassword2(!visiblePassword2)}  className='absolute right-4 bottom-[0.85rem] sm:bottom-[1.4rem] cursor-pointer text-gray-500 '>{visiblePassword2===true ? <VisibilityOffIcon/> : <VisibilityIcon/>}</span>
         <input required onChange={(e)=>setConfirmPassword(e.target.value)} className='placeholder:italic hover:bg-slate-100 transition-all duration-200 w-full border-2 hover:border-blue-400 my-2 sm:my-4 text-sm md:text-md  px-2 sm:px-4 min-w-[200px] py-2 focus:outline-none focus:border-blue-400 ring-2 ring-transparent' type={visiblePassword2 === true ? 'text' : 'password'} placeholder='Confirm Password' />
