@@ -37,26 +37,23 @@ export const BillingPage = () => {
         zipCode: zipCode,
         companyName: companyName,
         paymentMode: 'card',
-        paymentStatus: 'paid',
+        paymentStatus: 'pending',
         vatNumber: vat
     }
     useEffect(()=>{
         const stripeRequest = async() =>{
+            await axios.post(BASE_URL+`payment/${user && user.user._id}`,{
+                tokenId: stripeToken.id,
+                amount: (cart.total+20)*100,
+                description: stripeToken.card.id,
+            },{headers:{'token' : user.accessToken}})
             try {
-              const res =  await axios.post(BASE_URL+`payment/${user && user.user._id}`,{
-                   tokenId: stripeToken.id,
-                   amount: (cart.total+20)*100,
-                   description: stripeToken.card.id,
-               },{headers:{'token' : user.accessToken}})
-               if(res.data.status === 'succeeded'){
                    await axios.post(BASE_URL+`orders/${user && user.user._id}`,order,{headers:{'token' : user.accessToken}})
                    dispatch(resetCart())
                    navigate('/success',{replace: true})
-               }else{
-                 navigate('/failure', {replace: true})
-               }
-               
-            } catch (error) {
+            
+        } catch (error) {
+                navigate('/failure', {replace: true})
                 console.log(error)
             }
         }
@@ -139,7 +136,7 @@ export const BillingPage = () => {
                     <StripeCheckout
                     name='Cart-it'
                     description='Bring out the best in you!'
-                    email='cart_it@dev.com'
+                    email={user.user.email}
                     allowRememberMe={true}
                     image={img}
                     amount={(cart.total + 20)*100}

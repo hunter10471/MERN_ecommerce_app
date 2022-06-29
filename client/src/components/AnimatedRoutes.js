@@ -14,6 +14,7 @@ import { FailurePage } from '../pages/FailurePage'
 import { RecoverPage } from '../pages/RecoverPage'
 import { OtpPage } from '../pages/OtpPage'
 import {AccountPage} from '../pages/AccountPage'
+import { OrdersPage } from '../pages/OrdersPage'
 
 export const AnimatedRoutes = () => {
     const user = useSelector((state)=>state.user.currentUser);
@@ -26,6 +27,7 @@ export const AnimatedRoutes = () => {
     <Route path="/cart" element={<CartPage/>} />
     <Route path="/billing" element={<BillingPage/>} />
     <Route path="/account" element={ user ? <AccountPage/> : <Navigate replace to='/login' /> } />
+    <Route path="/orders" element={ user ? <OrdersPage/> : <Navigate replace to='/login' /> } />
     <Route path="/register" element={ user ? <Navigate replace to='/' /> : <Register/>} />
     <Route path="/login" element={user ? <Navigate replace to='/' /> :<Login/>}/>
     <Route path="/success" element={user ? <SuccessPage/> : <Navigate replace to='/error' /> }/>

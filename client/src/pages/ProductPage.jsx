@@ -89,7 +89,7 @@ export const ProductPage = () => {
               </div>
             </div>
       </div>
-          </>      : <div className='w-screen h-[95vh] flex items-center justify-center'>
+          </>      : <div className='w-screen h-[60vh] flex items-center justify-center'>
                     <CircularProgress sx={{color:'#FF9100'}} />
                      </div> 
 }

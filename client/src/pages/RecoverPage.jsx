@@ -21,7 +21,7 @@ export const RecoverPage = () => {
     }
   }
   return (
-    <div className='w-full h-screen flex flex-col items-center justify-center relative'>
+    <div className='w-full h-[80vh] flex flex-col items-center justify-center relative'>
         <img className='w-[80%] h-[20%]' src={recoverSvg} alt='error-404' />
         <h1 className='font-heading font-bold text-center text-stone-600 text-sm  sm:text-base lg:text-xl mt-2'>It's okay, we can all forget our password sometimes...</h1>
         <h2 className='text-center text-stone-500 text-[10px]  sm:text-xs lg:text-sm my-2'>Enter your email and we'll fetch your account right away for you!</h2>

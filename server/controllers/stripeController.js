@@ -6,6 +6,7 @@ const stripe = require('stripe')(secretStripeKey);
 
 const postPayment = (req,res) =>{
     try {
+
         stripe.charges.create({
             source: req.body.tokenId,
             amount: req.body.amount,

@@ -5,7 +5,7 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 export const SuccessPage = () => {
   return (
-    <div className='w-full h-screen flex flex-col items-center justify-center'>
+    <div className='w-full h-[80vh] flex flex-col items-center justify-center'>
         <img className='w-[80%] h-[40%]' src={purchaseSvg} alt='purchase-done' />
         <h1 className='font-heading font-bold text-center text-stone-600 text-sm sm:text-base lg:text-xl my-2'>You have successfully placed your order with us.</h1>
         <h2 className='mb-4 text-stone-500'>You will soon recieve a confirmation email from us.</h2>
