@@ -24,9 +24,13 @@ export const BillingPage = () => {
     const [stripeToken, setStripeToken] = useState(null)
     let navigate = useNavigate()
     const dispatch = useDispatch()
+
+
     const token = (token) => {
         setStripeToken(token)
     }
+
+
     const order = {
         userId: user.user._id,
         products: cart.products,
@@ -40,6 +44,8 @@ export const BillingPage = () => {
         paymentStatus: 'pending',
         vatNumber: vat
     }
+
+
     useEffect(()=>{
         const stripeRequest = async() =>{
             await axios.post(BASE_URL+`payment/${user && user.user._id}`,{
@@ -60,6 +66,8 @@ export const BillingPage = () => {
        stripeToken && stripeRequest()
         window.scrollTo(0,0)
     },[stripeToken,cart.total])
+
+
     useEffect(()=>{
         if(cart.total > 0){
             if(billingAddress !== '' && zipCode !== ''){
@@ -75,6 +83,8 @@ export const BillingPage = () => {
             setDisabled(true)
         }
     },[zipCode, billingAddress, country, city, cart.total])
+
+    
   return (
     <motion.div initial={{opacity:0}} animate={{opacity:1,transition:{duration:0.25,ease:'easeIn'}}} exit={{opacity:0,transition:{duration:0.12,ease:'easeIn'}}} className='px-2 my-10'>
        <Link to='/cart'><span className='flex items-center hover:underline hover:text-blue-600 text-xs sm:text-sm my-10 font-thin px-5 sm:mx-10 md:px-20'><KeyboardBackspaceIcon className='mr-2' fontSize='medium' />Back to cart</span></Link>
@@ -139,7 +149,7 @@ export const BillingPage = () => {
                     email={user.user.email}
                     allowRememberMe={true}
                     image={img}
-                    amount={(cart.total + 20)*100}
+                    amount={(cart.total + cart.total * 21/100)*100}
                     token={token}
                     stripeKey={STRIPE_PUBLIC}
                     >

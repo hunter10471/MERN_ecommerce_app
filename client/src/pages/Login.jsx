@@ -18,7 +18,6 @@ export const Login = () => {
     const [userError, setUserError] = useState(false)
     const [genericError, setGenericError] = useState(false)
     const {isFetching} = useSelector((state)=>state.user)
-
     const dispatch = useDispatch()
     const navigate = useNavigate()
 

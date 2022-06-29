@@ -10,6 +10,8 @@ export const RecoverPage = () => {
   const [error, setError] = useState(false)
   const [email, setEmail] = useState('')
   const navigate = useNavigate()
+
+
   const sendMail = async(e) =>{
     e.preventDefault()
     try {
@@ -20,6 +22,8 @@ export const RecoverPage = () => {
       setError(true)
     }
   }
+
+  
   return (
     <div className='w-full h-[80vh] flex flex-col items-center justify-center relative'>
         <img className='w-[80%] h-[20%]' src={recoverSvg} alt='error-404' />

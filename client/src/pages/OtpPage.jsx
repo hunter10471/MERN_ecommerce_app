@@ -16,6 +16,8 @@ export const OtpPage = () => {
   const [otp, setOtp] = useState(null)
   const [password, setPassword] = useState('')
   const [visiblePassword, setVisiblePassword] = useState(false)
+
+
   const changePass = async(e) =>{
     e.preventDefault()
     try {
@@ -26,6 +28,8 @@ export const OtpPage = () => {
       setError(true)
     }
   }
+
+  
   return (
     <div className='w-full h-screen flex flex-col items-center justify-center relative'>
         <img className='w-[80%] h-[20%] mb-5' src={otpSvg} alt='otp' />

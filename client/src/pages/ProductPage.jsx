@@ -20,6 +20,8 @@ export const ProductPage = () => {
   const cart = useSelector(state=> state.cart)
   const [data, setData] = useState(null);
   const dispatch = useDispatch();
+
+
   useEffect(()=>{
     window.scrollTo(0,0)
     const fetchProduct = async() =>{
@@ -29,6 +31,8 @@ export const ProductPage = () => {
     }
     fetchProduct();
   },[location.search])
+
+
   const handleClick = () => {
     if(cart.products.includes(data.productName)){
 
@@ -37,6 +41,8 @@ export const ProductPage = () => {
       addProduct({...data, quantity})
     )
   }
+
+  
   return ( 
     <>
     <motion.div initial={{opacity:0}} animate={{opacity:1,transition:{duration:0.25,ease:'easeIn'}}} exit={{opacity:0,transition:{duration:0.12,ease:'easeIn'}}} className='px-2 my-5 flex flex-col lg:flex-row justify-center items-center'>

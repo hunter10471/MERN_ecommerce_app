@@ -12,6 +12,7 @@ export const CartList = () => {
     const navigate = useNavigate()
     const cart = useSelector(state=> state.cart)
     const dispatch = useDispatch()
+
     const handleRemove = (product) =>{
         dispatch(removeProduct({...product}))
     }
@@ -19,9 +20,11 @@ export const CartList = () => {
     const addProd = (product) =>{
          dispatch(addProduct(product));
     }
+
     const removeProd = (product) =>{
          dispatch(removeOneProduct(product));
     }
+    
   return (
     <table className='w-full lg:w-[700px] xl:w-[1000px]'>
         <tr className='text-xs md:text-sm lg:text-base text-slate-400 uppercase'>

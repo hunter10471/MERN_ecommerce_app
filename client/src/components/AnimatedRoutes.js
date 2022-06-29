@@ -17,8 +17,11 @@ import {AccountPage} from '../pages/AccountPage'
 import { OrdersPage } from '../pages/OrdersPage'
 
 export const AnimatedRoutes = () => {
+
     const user = useSelector((state)=>state.user.currentUser);
     const location = useLocation()
+
+    
   return (
     <AnimatePresence exitBeforeEnter >
     <Routes location={location} key={location.pathname} >

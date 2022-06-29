@@ -37,6 +37,8 @@ const responsive = {
 
 export const SuggestedProducts = ({category = null}) => {
     const [data, setData] = useState(null)
+
+    
     useEffect(()=>{
         const fetchCat = async() =>{
           const products = await axios.get(BASE_URL+'products/category?category='+category[0]);
@@ -45,6 +47,8 @@ export const SuggestedProducts = ({category = null}) => {
         }
         fetchCat()
       },[category])
+
+
   return (
     <div>
         <h1 className='text-center my-10 text-lg sm:text-xl md:text-2xl lg:text-3xl font-heading font-extrabold bg-rose-500 text-white border-b-4 border-rose-600 p-4'>Suggested Products</h1>

@@ -49,15 +49,21 @@ export const Home = () => {
   const [catData, setCatData] = useState(null)
   const [category, setCategory] = useState(null)
   const isMounted = useRef(false);
+
+
   useEffect(()=>{
     const fetchProducts = async() =>{
       const products = await axios.get(BASE_URL+'products')
       setData(products);
     }
+
+
     fetchProducts();
     console.log(data);
     window.scrollTo(0,0)
 },[]) //eslint-disable-line
+
+
   useEffect(()=>{
     const fetchCat = async() =>{
       const products = await axios.get(BASE_URL+'products/category?category='+category);
@@ -66,6 +72,8 @@ export const Home = () => {
     if(isMounted.current) fetchCat();
     else isMounted.current = true;
   },[category])
+
+  
   return (
     <motion.div initial={{opacity:0}} animate={{opacity:1,transition:{duration:0.25,ease:'easeIn'}}} exit={{opacity:0,transition:{duration:0.12,ease:'easeIn'}}}  >
     <Hero/>

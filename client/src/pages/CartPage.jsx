@@ -10,12 +10,16 @@ export const CartPage = () => {
     const dispatch = useDispatch();
     const cart = useSelector(state=>state.cart)
     const user = useSelector(state=>state.user.currentUser)
+
+
     useEffect(()=>{
         window.scrollTo(0,0)
     },[])
     const handleReset = () =>{
         dispatch(resetCart());
     }
+
+    
   return (
     <motion.div initial={{opacity:0}} animate={{opacity:1,transition:{duration:0.25,ease:'easeIn'}}} exit={{opacity:0,transition:{duration:0.12,ease:'easeIn'}}} className='px-2 pr-4 my-10'>
         <h1 className='text-xl md:text-2xl lg:text-3xl font-heading font-medium my-5 px-5 sm:mx-10 md:px-20'>Cart</h1>

@@ -32,16 +32,18 @@ export const OrdersPage = () => {
 
   return (
     <motion.div initial={{opacity:0}} animate={{opacity:1,transition:{duration:0.25,ease:'easeIn'}}} exit={{opacity:0,transition:{duration:0.12,ease:'easeIn'}}} className='p-6' >
+        {
+          orders ? (data ? <div className='flex flex-col items-center'>
+        <div className='max-w-[1000px] w-full my-5'>
         <h1 className='font-heading font-bold capitalize text-stone-700 lg:text-2xl sm:text-xl text-lg'>
-          Hello, {user.user.username}
+          Orders
         </h1>
         <h2 className='text-xs sm:text-sm lg:text-base text-stone-600'>
           Following are your orders details 
         </h2>
-        {
-          orders ? (data ? <div>
+        </div>
             {data.map(el=> {
-              return <Order id={el._id} totalAmount={el.amount} paymentStatus={el.paymentStatus} shipmentStatus={el.shipmentStatus} products={el.products} />
+              return <Order id={el._id} totalAmount={el.amount} paymentStatus={el.paymentStatus} shipmentStatus={el.shipmentStatus} products={el.products} address={el.billingAddress} />
             })}
           </div> :
           <div className={`w-[95vw] h-[60vh] flex items-center justify-center`}>

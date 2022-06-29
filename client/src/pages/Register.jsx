@@ -42,6 +42,8 @@ export const Register = () => {
         }
       };
     }
+
+    
   return (
       <motion.div initial={{opacity:0}} animate={{opacity:1,transition:{duration:0.25,ease:'easeIn'}}} exit={{opacity:0,transition:{duration:0.12,ease:'easeIn'}}} className='flex bg-gradient-to-br from-slate-100 overflow-x-hidden relative justify-center'>
       <div className='mx-4 my-[5vh]'>

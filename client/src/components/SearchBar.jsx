@@ -10,6 +10,8 @@ export const SearchBar = () => {
     const [data, setData] = useState([]);
     const [value, setValue] = useState('');
     const [width, setWidth] = useState(false)
+
+    
     useEffect(()=>{
         const fetchData = async() =>{
             const res = await axios.get(BASE_URL+'products/search?name='+value);
@@ -17,6 +19,8 @@ export const SearchBar = () => {
         }
         fetchData();
       },[value])
+
+
     return (
     <div  className={`z-[100] absolute sm:left-[180px] md:left-[200px] lg:left-[250px] xl:left-[300px] top-[25%]  hidden lg:block transition-all duration-200 ease-in-out ${width ? 'w-4/12' : 'w-2/12'}`}>
     <div  onFocus={()=>setWidth(true)} onBlur={()=>{setWidth(false)}}>
