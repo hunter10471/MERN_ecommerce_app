@@ -10,6 +10,18 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    address:{
+        type: String,
+        default: null
+    },
+    city:{
+        type: String,
+        default: null
+    },
+    postalCode:{
+        type: String,
+        default: null
+    },
     email:{
         type: String,
         required: true,

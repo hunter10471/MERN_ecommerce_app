@@ -13,6 +13,7 @@ import { SuccessPage } from '../pages/SuccessPage'
 import { FailurePage } from '../pages/FailurePage'
 import { RecoverPage } from '../pages/RecoverPage'
 import { OtpPage } from '../pages/OtpPage'
+import {AccountPage} from '../pages/AccountPage'
 
 export const AnimatedRoutes = () => {
     const user = useSelector((state)=>state.user.currentUser);
@@ -24,12 +25,13 @@ export const AnimatedRoutes = () => {
     <Route path="/product" element={<ProductPage/>} />
     <Route path="/cart" element={<CartPage/>} />
     <Route path="/billing" element={<BillingPage/>} />
+    <Route path="/account" element={ user ? <AccountPage/> : <Navigate replace to='/login' /> } />
     <Route path="/register" element={ user ? <Navigate replace to='/' /> : <Register/>} />
     <Route path="/login" element={user ? <Navigate replace to='/' /> :<Login/>}/>
     <Route path="/success" element={user ? <SuccessPage/> : <Navigate replace to='/error' /> }/>
     <Route path="/failure" element={user ? <FailurePage/> : <Navigate replace to='/error' /> }/>
     <Route path="/recover" element={<RecoverPage/>}/>
-    <Route path="/otp-verify" element={<OtpPage/>}/>
+    <Route path="/recover/otp-verify" element={<OtpPage/>}/>
     <Route path="*" element={<ErrorPage/>}/>
     </Routes>
     </AnimatePresence>

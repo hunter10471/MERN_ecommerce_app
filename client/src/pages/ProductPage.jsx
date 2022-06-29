@@ -59,7 +59,7 @@ export const ProductPage = () => {
                 <span className='flex justify-between items-center border-2 my-2 py-1 px-2 w-[100px] text-sm md:text-base'>
                  <button disabled={quantity === 0} className='cursor-pointer disabled:text-slate-400 disabled:cursor-not-allowed' onClick={()=>setQuantity( quantity > 1 ? quantity-1 : 0)} > <RemoveIcon fontSize='' /></button>
                   {quantity}
-                <SnackBar> <button className='cursor-pointer' onClick={()=>setQuantity(quantity+1)}><AddIcon  fontSize='' /></button></SnackBar>
+                <SnackBar text={'Successfully added product to cart!'} > <button className='cursor-pointer' onClick={()=>setQuantity(quantity+1)}><AddIcon  fontSize='' /></button></SnackBar>
                 </span>
               </div>
               <span className='flex flex-col text-lg md:text-xl lg:text-2xl font-[500] text-right'>
@@ -67,7 +67,7 @@ export const ProductPage = () => {
                 <span className='text-xs text-slate-400 md:text-sm tracking-wide mt-1'>13% VAT included*</span>
               </span>
             </div>
-            <span></span><SnackBar><button onClick={()=>handleClick()} className='mt-8 mb-2 w-full text-xs md:text-sm lg:text-base transition-all hover:bg-primaryLight py-2 px-4 bg-primary rounded-sm font-medium text-white'>Add to Cart</button></SnackBar>
+            <span></span><SnackBar text={'Successfully added product to cart!'} ><button onClick={()=>handleClick()} className='mt-8 mb-2 w-full text-xs md:text-sm lg:text-base transition-all hover:bg-primaryLight py-2 px-4 bg-primary rounded-sm font-medium text-white'>Add to Cart</button></SnackBar>
             <Link to='/billing'><button className='mb-8 mt-2 w-full text-xs md:text-sm lg:text-base transition-all py-2 px-4 hover:border-primaryLight hover:text-primaryLight border-primary border-2 font-medium text-primary rounded-sm'>Checkout</button></Link>
             <div>
               <h2 className='font-medium text-sm md:text-base lg:text-lg my-5'>Specifications</h2>

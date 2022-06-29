@@ -4,32 +4,35 @@ const logger = require('../utils/logger');
 
 
 const getUsers = async(req,res) =>{
+
     try {
-        const qId = req.query.id;
-        if(qId){
-            const user = await User.findById(qId);
-            if(!user) return res.status(404).json('User not found.');
-            const {password, ...others} = user._doc //eslint-disable-line
-            res.status(200).json({ message:'User found.',user:others});
-        }else{
-            try {
-                const users = await User.find().sort({_id: -1});
-                if(!users) return res.status(404).json('Could not find any users.');
-                const usersArray = Object.values(users);
-                res.status(200).json({message:'Users have been fetched successfully: ',users:usersArray.map(el=>{
+        const users = await User.find().sort({_id: -1});
+        if(!users) return res.status(404).json('Could not find any users.');
+        const usersArray = Object.values(users);
+        res.status(200).json({message:'Users have been fetched successfully: ',users:usersArray.map(el=>{
                     const {password, ...others} = el._doc; //eslint-disable-line
-                    return others;
-                })});
-            } catch (error) {
-                console.log('Error fetching all users');
-                res.status(500).json({message:'Could not fetch all users.',error:error});
-            }
-        }
-    }catch(error){
-        logger.error({message:'User could not be fetched.',error:error});
-        res.status(500).json({message:'User could not be fetched.',error:error});
+            return others;
+        })});
+    } catch (error) {
+        console.log('Error fetching all users');
+        res.status(500).json({message:'Could not fetch all users.',error:error});
     }
 };
+
+
+const getUser = async(req,res) =>{
+
+    try {
+        const user = await User.findById(req.params.id);
+        if(!user) return res.status(404).json('Could not find user.');
+        const {password, ...others} = user._doc //eslint-disable-line
+        res.status(200).json({message:'User has been fetched successfully: ',user: others});
+    } catch (error) {
+        console.log('Error fetching all users');
+        res.status(500).json({message:'Could not fetch all users.',error:error});
+    }
+};
+
 
 const getUserPublic = async(req,res) =>{
     try {
@@ -78,4 +81,4 @@ const deleteUser = async(req,res) =>{
     }
 };
 
-module.exports = {getUsers, updateUser, deleteUser, getUserPublic};
+module.exports = {getUsers, updateUser, deleteUser, getUserPublic, getUser};

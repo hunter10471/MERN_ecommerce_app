@@ -1,5 +1,7 @@
 import { loginStart,loginFailure,loginSuccess, logoutSuccess, logoutFailure } from "./userRedux";
 import { publicRequest } from "../requestMethods";
+import { Navigate } from "react-router-dom";
+
 
 export const login = async(dispatch, user) =>{
     dispatch(loginStart());
@@ -13,8 +15,10 @@ export const login = async(dispatch, user) =>{
 };
 
 export const logout = async(dispatch) =>{
-    try {
-        dispatch(logoutSuccess());
+    try { 
+        <Navigate to='/login' />
+        dispatch(logoutSuccess())
+        return;
     } catch (error) {
         dispatch(logoutFailure());
         return error;

@@ -26,7 +26,7 @@ export const Navbar = () => {
         </div>
         <div className=' w-full mx-4 lg:w-auto my-10 lg:my-0 flex items-center flex-col lg:flex-row '>
         <Profile/>
-        <div className='my-5 lg:my-0 lg:mx-5 xl:mx-10  w-full flex items-center justify-center  lg:w-auto cursor-pointer text-2xl lg:text-3xl relative'>
+        <div className='my-10 lg:my-0 lg:mx-5 xl:mx-10  w-full flex items-center justify-center  lg:w-auto cursor-pointer text-2xl lg:text-3xl relative'>
         <Link to='/cart'>
             <ShoppingCartOutlinedIcon fontSize='' /> 
             <span className='p-2 bg-primary flex items-center justify-center font-bold right-[50%] bottom-[50%] lg:right-4 lg:bottom-4 h-[24px] w-[24px] text-[10px] absolute rounded-[50%]'>{cart.quantity}</span>
