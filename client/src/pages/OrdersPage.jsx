@@ -42,8 +42,8 @@ export const OrdersPage = () => {
           Following are your orders details 
         </h2>
         </div>
-            {data.map(el=> {
-              return <Order id={el._id} totalAmount={el.amount} paymentStatus={el.paymentStatus} shipmentStatus={el.shipmentStatus} products={el.products} address={el.billingAddress} />
+            {data.map((el, index)=> {
+              return <Order key={index} id={el._id} totalAmount={el.amount} paymentStatus={el.paymentStatus} shipmentStatus={el.shipmentStatus} products={el.products} address={el.billingAddress} />
             })}
           </div> :
           <div className={`w-[95vw] h-[60vh] flex items-center justify-center`}>

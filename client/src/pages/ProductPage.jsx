@@ -51,7 +51,7 @@ export const ProductPage = () => {
       <ProductImgSlider imgs={[data.productImg]}  />
       </div>
       <div className='m-5 md:m-6 lg:m-10 lg:w-auto'>
-         { category.map(el =>  <span className='py-1 px-2 mr-2 bg-gray-300 uppercase tracking-wide font-heading text-[10px] sm:text-xs md:text-sm'>{el}</span> )}
+         { category.map((el, index) =>  <span key={index} className='py-1 px-2 mr-2 bg-gray-300 uppercase tracking-wide font-heading text-[10px] sm:text-xs md:text-sm'>{el}</span> )}
           <h1 className='my-4 text-xl md:text-2xl lg:text-3xl font-medium'>{data.productName}</h1>
             <span className='text-xs md:text-sm text-slate-400 uppercase my-2 tracking-wide'>SKU: {data._id}</span>
             <p className='max-w-[600px] lg:max-w-[400px] my-5 text-slate-600 text-sm md:text-base tracking-wide'>
