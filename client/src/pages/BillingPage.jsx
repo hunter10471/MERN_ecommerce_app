@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import StripeCheckout from 'react-stripe-checkout';
+import axios from 'axios';
+
+
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import StripeCheckout from 'react-stripe-checkout';
-import axios from 'axios';
-import { BASE_URL } from '../requestMethods';
-import img from '../images/shoe.jpg';
 import { resetCart } from '../redux/cartRedux';
+import { BASE_URL } from '../requestMethods';
+import { Helmet } from 'react-helmet-async';
+
+
+import img from '../images/shoe.jpg';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 const STRIPE_PUBLIC =
   'pk_test_51JgXuYSJbpeK7y2B8gp14PC5o6QdeofhURiwQQzdGVH3OASYZWqGIFyCzlOrLofvenHL1ZHMq6zWTquHRRaAC29w00wqlrxBxK';
@@ -86,7 +91,14 @@ export const BillingPage = () => {
     }
   }, [zipCode, billingAddress, country, city, cart.total]);
 
-  return (
+  return (<>
+    <Helmet>
+      <title>Billing{user && ` - ${user.user.username}`} - Cart-it</title>
+      <meta
+        name='description'
+        content='Checkout now to get your favourite products delivered at your doorstep!'
+      />
+    </Helmet> 
     <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.25, ease: 'easeIn' } }}
@@ -254,5 +266,6 @@ export const BillingPage = () => {
         </div>
       </div>
     </motion.main>
+  </>
   );
 };

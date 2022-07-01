@@ -1,14 +1,18 @@
 import * as React from 'react';
+
+
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { logout } from '../redux/apiCalls';
+
+
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import LogoutIcon from '@mui/icons-material/Logout';
+import avatar from '../images/avatar.png';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import LogoutIcon from '@mui/icons-material/Logout';
-import { useDispatch, useSelector } from 'react-redux';
-import avatar from '../images/avatar.png';
-import { Link } from 'react-router-dom';
-import { logout } from '../redux/apiCalls';
 import CloseOutlined from '@mui/icons-material/CloseOutlined';
 
 export default function Profile() {
@@ -34,7 +38,7 @@ export default function Profile() {
     }, 5000);
   };
 
-  const CustomButton = ({ type, text }) => {
+  const CustomButton = ({ type, text }) => {  //eslint-disable-line
     return (
       <button
         className={`py-2 px-4 lg:px-6 lg:mx-2  my-2 lg:my-0 text-sm md:text-md font-medium font-heading rounded-sm ${

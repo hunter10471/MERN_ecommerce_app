@@ -1,8 +1,12 @@
 import React from 'react';
-import {products} from '../data';
 import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+
+
+import {products} from '../data';
 import { motion } from 'framer-motion';
+
+
+import 'react-multi-carousel/lib/styles.css';
 
 const responsive = {
   Bigdesktop: {

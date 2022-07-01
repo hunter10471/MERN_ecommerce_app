@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import avatar from '../images/avatar.png';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
 import axios from 'axios';
+
+
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../requestMethods';
 import { Alert } from '@mui/material';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
+
+
 import CircularProgress from '@mui/material/CircularProgress';
-import { useNavigate } from 'react-router-dom';
+import avatar from '../images/avatar.png';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 export const AccountPage = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -81,7 +86,14 @@ export const AccountPage = () => {
     }
   }, []);
 
-  return (
+  return (<>
+    <Helmet>
+      <title>Account{user && ` - ${user.user.username}`} - Cart-it</title>
+      <meta
+        name='description'
+        content='Keep your details upto date on cart-it to avoid any delivery issues.'
+      />
+    </Helmet> 
     <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.25, ease: 'easeIn' } }}
@@ -198,7 +210,7 @@ export const AccountPage = () => {
           </button>
         </form>
       ) : (
-        <div className={`w-[95vw] h-[60vh] flex items-center justify-center`}>
+        <div className={`w-[95vw] h-[60vh] flex items-center justify-center`}> {/*eslint-disable-line*/}
           <CircularProgress sx={{ color: '#FF9100' }} />
         </div>
       )}
@@ -217,5 +229,6 @@ export const AccountPage = () => {
         There was an error with your request
       </Alert>
     </motion.main>
+  </>
   );
 };

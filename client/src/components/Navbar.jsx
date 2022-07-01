@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+
+
+import Profile from './Profile';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { SearchBar } from './SearchBar';
-import Profile from './Profile';
+
+
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 
 export const Navbar = () => {
   const cart = useSelector((state) => state.cart);

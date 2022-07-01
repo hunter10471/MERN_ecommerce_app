@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
+
+
 import { Link } from 'react-router-dom';
 import { CartList } from '../components/CartList';
 import { useSelector, useDispatch } from 'react-redux';
 import { resetCart } from '../redux/cartRedux';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 
 export const CartPage = () => {
   const dispatch = useDispatch();
@@ -17,7 +20,14 @@ export const CartPage = () => {
     dispatch(resetCart());
   };
 
-  return (
+  return ( <>
+    <Helmet>
+      <title>Cart{user && ` - ${user.user.username}`} - Cart-it</title>
+      <meta
+        name='description'
+        content='Checkout now to get your favourite products delivered at your doorstep!'
+      />
+    </Helmet> 
     <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.25, ease: 'easeIn' } }}
@@ -73,5 +83,6 @@ export const CartPage = () => {
         </div>
       </div>
     </motion.main>
+  </>
   );
 };

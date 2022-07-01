@@ -1,11 +1,13 @@
 import React from 'react';
+
+
 import { motion } from 'framer-motion';
 
-export const CategoryCard = ({ title, bgColor, img, desc, variants }) => {
+export const CategoryCard = ({ title, bgColor, img, desc, variants }) => { //eslint-disable-line
   return (
     <motion.section
       style={{ backgroundColor: `${bgColor}` }}
-      className={`transition-all duration-200 hover:scale-[1.08] rounded-md text-secondary pb-4 flex-shrink-0 m-1 sm:m-4 shadow-xl `}
+      className={`transition-all duration-200 hover:scale-[1.08] rounded-md text-secondary pb-4 flex-shrink-0 m-1 sm:m-4 shadow-xl `} //eslint-disable-line
     >
       <img
         className='w-[150px] h-[150px] sm:w-[200px] sm:h-[200px]  md:w-[250px] md:h-[250px] rounded-md object-cover object-center '

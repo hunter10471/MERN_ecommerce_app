@@ -1,4 +1,6 @@
 import React from 'react';
+
+
 import { motion } from 'framer-motion';
 
 const animations = {
@@ -16,7 +18,7 @@ const animations = {
   },
 };
 
-export const AnimatedPage = ({ children, classes }) => {
+export const AnimatedPage = ({ children, classes }) => {  //eslint-disable-line
   return (
     <motion.div
       variants={animations}
@@ -30,3 +32,4 @@ export const AnimatedPage = ({ children, classes }) => {
     </motion.div>
   );
 };
+

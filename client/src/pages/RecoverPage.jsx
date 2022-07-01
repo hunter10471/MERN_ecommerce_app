@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+
+
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../requestMethods';
+import { Helmet } from 'react-helmet-async';
+
+
 import recoverSvg from '../images/forgot.svg';
 import EmailIcon from '@mui/icons-material/Email';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import CloseOutlined from '@mui/icons-material/CloseOutlined';
-import axios from 'axios';
-import { BASE_URL } from '../requestMethods';
+
+
 export const RecoverPage = () => {
   const [error, setError] = useState(false);
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
+
 
   const sendMail = async (e) => {
     e.preventDefault();
@@ -22,14 +30,22 @@ export const RecoverPage = () => {
     }
   };
 
-  return (
+
+  return ( <>
+    <Helmet>
+      <title>Recover your account — Cart-it</title>
+      <meta
+        name='description'
+        content='Enter your email to recieve an OTP and recover your cart-it account'
+      />
+    </Helmet>
     <div className='w-full h-[80vh] flex flex-col items-center justify-center relative'>
       <img className='w-[80%] h-[20%]' src={recoverSvg} alt='error-404' />
       <h1 className='font-heading font-bold text-center text-stone-600 text-sm  sm:text-base lg:text-xl mt-2'>
-        It's okay, we can all forget our password sometimes...
+        It&apos;s okay, we can all forget our password sometimes...
       </h1>
       <h2 className='text-center text-stone-500 text-[10px]  sm:text-xs lg:text-sm my-2'>
-        Enter your email and we'll fetch your account right away for you!
+        Enter your email and we&apos;ll fetch your account right away for you!
       </h2>
       <form onSubmit={sendMail}>
         <label className=' text-stone-500 mr-2' htmlFor=''>
@@ -57,5 +73,6 @@ export const RecoverPage = () => {
         </span>
       )}
     </div>
+  </>
   );
 };

@@ -33,7 +33,7 @@ const responsive = {
   },
 };
 
-export const SuggestedProducts = ({ category = null }) => {
+export const SuggestedProducts = ({ category = null }) => {  //eslint-disable-line
   const [data, setData] = useState(null);
 
   useEffect(() => {

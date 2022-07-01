@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import SearchIcon from '@mui/icons-material/Search';
 import axios from 'axios';
+
+
 import { BASE_URL } from '../requestMethods';
 import { Link } from 'react-router-dom';
+
+
 import Rating from '@mui/material/Rating';
+import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 
 export const SearchBar = () => {

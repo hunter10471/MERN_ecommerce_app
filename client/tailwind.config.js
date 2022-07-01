@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = { //eslint-disable-line
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
@@ -17,6 +17,6 @@ module.exports = {
     },
   },
   plugins: [
-    require('@tailwindcss/line-clamp')
+        require('@tailwindcss/line-clamp')  //eslint-disable-line
   ],
-}
+};

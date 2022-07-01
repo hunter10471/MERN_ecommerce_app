@@ -1,8 +1,12 @@
 import React from 'react';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
+
 import {aboutUs, earnMoney, needHelp} from '../data';
 import { FooterSelect } from './FooterSelect';
 import { FooterList } from './FooterList';
+
+
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 export const Footer = () => {
   return (
@@ -24,7 +28,7 @@ export const Footer = () => {
         <FooterSelect />
       </div>
       <p className='text-center text-[10px] md:text-xs p-2'>
-        © 1996-2022 Cart-it is a reserved site with it's rights vested in the
+        © 1996-2022 Cart-it is a reserved site with it&apos;s rights vested in the
         respective owners and affaliates.
       </p>
     </footer>

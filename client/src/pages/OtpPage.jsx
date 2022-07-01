@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+
+import { Link, useLocation } from 'react-router-dom';
+import { BASE_URL } from '../requestMethods';
+
+
 import otpSvg from '../images/otp.svg';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Filter4Icon from '@mui/icons-material/Filter4';
 import LockIcon from '@mui/icons-material/Lock';
 import CloseOutlined from '@mui/icons-material/CloseOutlined';
-import axios from 'axios';
-import { BASE_URL } from '../requestMethods';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Visibility from '@mui/icons-material/Visibility';
+
+
 export const OtpPage = () => {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);

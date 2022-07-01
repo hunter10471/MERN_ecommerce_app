@@ -1,15 +1,19 @@
 import React from 'react';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-import CloseIcon from '@mui/icons-material/Close';
+
+
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addProduct,
   removeOneProduct,
   removeProduct,
 } from '../redux/cartRedux';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useNavigate } from 'react-router-dom';
+
+
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import CloseIcon from '@mui/icons-material/Close';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 export const CartList = () => {
   const navigate = useNavigate();

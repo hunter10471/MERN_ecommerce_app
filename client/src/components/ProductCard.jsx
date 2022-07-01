@@ -1,11 +1,16 @@
 import React from 'react';
-import Rating from '@mui/material/Rating';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+
+
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
+
+import Rating from '@mui/material/Rating';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+
 export const ProductCard = ({
-  img,
+  /*eslint-disable*/
+  img, 
   discount,
   title,
   price,
@@ -13,6 +18,7 @@ export const ProductCard = ({
   category = [],
   id,
   variants,
+  /*eslint-disable*/
 }) => {
   return (
     <motion.div

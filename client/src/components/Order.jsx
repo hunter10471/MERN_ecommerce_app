@@ -1,14 +1,19 @@
 import React from 'react';
+
+
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PaidIcon from '@mui/icons-material/Paid';
 
 export const Order = ({
+  /*eslint-disable*/
   id,
   totalAmount,
   products,
   paymentStatus,
   shipmentStatus,
   address,
+  /*eslint-disable*/
+
 }) => {
   return (
     <div className='flex flex-col justify-between p-6 pl-0 border-b-2 border-primary max-w-[1000px] w-full'>

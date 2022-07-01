@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const ProductImgSlider = ({ imgs = [] }) => {
+export const ProductImgSlider = ({ imgs = [] }) => {  //eslint-disable-line
   const [img, setImg] = useState(0);
   return (
     <div className='w-fit flex flex-col items-center'>

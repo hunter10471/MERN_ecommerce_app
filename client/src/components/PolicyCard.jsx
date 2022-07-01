@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const PolicyCard = ({ img, title }) => {
+export const PolicyCard = ({ img, title }) => { //eslint-disable-line
   return (
     <div className='flex m-1 md:m-4 flex-col items-center'>
       <img
