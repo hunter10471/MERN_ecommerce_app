@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 
 import Rating from '@mui/material/Rating';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import { LazyImage } from './LazyImage';
 
 export const ProductCard = ({
   /*eslint-disable*/
@@ -33,10 +34,9 @@ export const ProductCard = ({
         >
           {discount} % Off
         </span>
-        <img
+        <LazyImage
           src={img}
-          className='rounded-t-xl cursor-pointer h-[25vh] sm:h-[190px] md:h-[250px] w-[40vw] sm:w-[30vw] md:w-[25vw] lg:w-[25vw] object-cover'
-          alt=''
+          classes='rounded-t-xl cursor-pointer h-[25vh] sm:h-[190px] md:h-[250px] w-[40vw] sm:w-[30vw] md:w-[25vw] lg:w-[25vw] object-cover'
         />
       </Link>
       <div className='flex flex-col justify-between py-4 px-2 md:px-4 h-full'>

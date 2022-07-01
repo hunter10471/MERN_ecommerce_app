@@ -18,7 +18,7 @@ import { OtpPage } from '../pages/OtpPage';
 import { AccountPage } from '../pages/AccountPage';
 import { OrdersPage } from '../pages/OrdersPage';
 
-export const AnimatedRoutes = () => {
+export default function AnimatedRoutes (){
   const user = useSelector((state) => state.user.currentUser);
   const location = useLocation();
 
@@ -59,4 +59,4 @@ export const AnimatedRoutes = () => {
       </Routes>
     </AnimatePresence>
   );
-};
+}
