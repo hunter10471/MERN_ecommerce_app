@@ -22,7 +22,7 @@ export const CartPage = () => {
 
   return ( <>
     <Helmet>
-      <title>Cart{user && ` - ${user.user.username}`} - Cart-it</title>
+      <title>{`Cart ${user && ` - ${user.user.username}`} - Cart-it`}</title>
       <meta
         name='description'
         content='Checkout now to get your favourite products delivered at your doorstep!'

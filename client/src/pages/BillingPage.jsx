@@ -93,7 +93,7 @@ export const BillingPage = () => {
 
   return (<>
     <Helmet>
-      <title>Billing{user && ` - ${user.user.username}`} - Cart-it</title>
+      <title>{`Billing ${user && ` - ${user.user.username}`} - Cart-it`}</title>
       <meta
         name='description'
         content='Checkout now to get your favourite products delivered at your doorstep!'

@@ -88,7 +88,7 @@ export const AccountPage = () => {
 
   return (<>
     <Helmet>
-      <title>Account{user && ` - ${user.user.username}`} - Cart-it</title>
+      <title>{`Account ${user && ` - ${user.user.username}`} - Cart-it`}</title>
       <meta
         name='description'
         content='Keep your details upto date on cart-it to avoid any delivery issues.'
