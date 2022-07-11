@@ -12,9 +12,11 @@ const logger = require('./utils/logger');
 const path = require('path');
 require('./config/dbConnection');
 
+
+app.options('*', cors());
 dotenv.config();
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
 app.use('/api/products', productRoute);
@@ -24,14 +26,14 @@ app.use('/api/payment', paymentRoute);
 
 //eslint-disable
 __dirname = path.resolve();
-app.use(express.static(path.join(__dirname,'/client/build')))
+app.use(express.static(path.join(__dirname, '/client/build')));
 
-app.get('*', (req,res)=>{
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
 
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
-    logger.info('Server running on port ' + PORT);
+  logger.info('Server running on port ' + PORT);
 });

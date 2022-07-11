@@ -28,16 +28,3 @@ export const CategoryCard = ({ title, bgColor, img, desc, variants }) => { //esl
 };
 
 
-/*eslint-disable*/
-
-function reverse(string){   
-  let newStr = ''
-  if(string.length === 1){
-    return string;
-  }else{
-    newStr = newStr.concat(string[string.length - 1])
-    return newStr.concat(reverse(string.slice(0, string.length - 1)))
-  }
-}
-
-console.log(reverse('rafay'))
