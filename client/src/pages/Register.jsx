@@ -175,13 +175,6 @@ export const Register = () => {
                 placeholder='Confirm Password'
               />
             </div>
-            <div className='flex items-center w-full text-[10px] md:text-[14px] mb-2 text-stone-600'>
-              {' '}
-              <LockIcon fontSize='' />{' '}
-              <span className='ml-1 sm:mt-[3px]'>
-                Password must be longer than 8 characters.{' '}
-              </span>{' '}
-            </div>
 
             {password !== confirmPassword && (
               <span className='text-red-600 text-xs mb-2 md:text-sm text-center'>
