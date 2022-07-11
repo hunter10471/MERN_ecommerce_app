@@ -14,6 +14,12 @@ _User account_:
 username: admin
 password: 12345678
 ```
+_Credit Card_:
+```bash
+number: 4242 4242 4242 4242
+date: any future date
+cvc : any 3 digit mumber
+```
 
 ## 🔥 Features
 
