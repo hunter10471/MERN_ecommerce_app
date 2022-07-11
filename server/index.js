@@ -1,5 +1,5 @@
-const epxress = require('express');
-const app = epxress();
+const express = require('express');
+const app = express();
 const dotenv = require('dotenv');
 const cors = require('cors');
 const authRoute = require('./routes/auth');
@@ -9,11 +9,12 @@ const productRoute = require('./routes/products');
 const cartRoute = require('./routes/carts');
 const paymentRoute = require('./routes/stripe');
 const logger = require('./utils/logger');
+const path = require('path');
 require('./config/dbConnection');
 
 dotenv.config();
 app.use(cors());
-app.use(epxress.json());
+app.use(express.json());
 app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
 app.use('/api/products', productRoute);
@@ -22,8 +23,15 @@ app.use('/api/carts', cartRoute);
 app.use('/api/payment', paymentRoute);
 
 
+__dirname = path.resolve();
+app.use(express.static(path.join(__dirname,'../client/build')))
+app.get('*',(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'../client','build','index.html'))
+});
 
 
-app.listen(4000, () => {
-    logger.info('Server running on port 4000.');
+const PORT = process.env.PORT || 4000;
+
+app.listen(PORT, () => {
+    logger.info('Server running on port ' + PORT);
 });
