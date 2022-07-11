@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Countdown from 'react-countdown';
 import axios from 'axios';
 import { Helmet } from 'react-helmet-async';
+import { BASE_URL } from '../requestMethods';
 
 
 import { CategoryCard } from '../components/CategoryCard';
@@ -58,7 +59,7 @@ export const Home = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const products = await axios.get('/products');
+      const products = await axios.get(BASE_URL + 'products');
       setData(products);
     };
 
@@ -69,7 +70,7 @@ export const Home = () => {
   useEffect(() => {
     const fetchCat = async () => {
       const products = await axios.get(
-        '/products/category?category=' + category
+        BASE_URL + 'products/category?category=' + category
       );
       setCatData(products.data.products);
     };
