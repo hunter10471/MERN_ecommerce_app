@@ -22,7 +22,7 @@ app.use('/api/orders', orderRoute);
 app.use('/api/carts', cartRoute);
 app.use('/api/payment', paymentRoute);
 
-
+//eslint-disable
 __dirname = path.resolve();
 app.use(express.static(path.join(__dirname,'/client/build')))
 

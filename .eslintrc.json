@@ -9,7 +9,7 @@
         "password": true
     },
     "extends": [
-        "eslint:recommended",
+        "eslint:recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
