@@ -34,7 +34,7 @@ export const Register = () => {
       password: password,
     };
     try {
-      await axios.post('/auth/register', user); //eslint-disable-line
+      await axios.post('/api/auth/register', user); //eslint-disable-line
       setSuccessMsg(true);
     } catch (error) {
       if (error.response.status === 400) {

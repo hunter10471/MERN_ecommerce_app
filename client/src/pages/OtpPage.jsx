@@ -25,7 +25,7 @@ export const OtpPage = () => {
   const changePass = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/auth/change-password', {
+      await axios.post('/api/auth/change-password', {
         email: email,
         otpCode: otp,
         password: password,

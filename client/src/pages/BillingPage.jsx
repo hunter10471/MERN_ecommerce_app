@@ -7,7 +7,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetCart } from '../redux/cartRedux';
-import { BASE_URL } from '../requestMethods';
 import { Helmet } from 'react-helmet-async';
 
 
@@ -52,7 +51,7 @@ export const BillingPage = () => {
   useEffect(() => {
     const stripeRequest = async () => {
       await axios.post(
-        BASE_URL + `payment/${user && user.user._id}`,
+        `/api/payment/${user && user.user._id}`,
         {
           tokenId: stripeToken.id,
           amount: (cart.total + 20) * 100,
@@ -61,7 +60,7 @@ export const BillingPage = () => {
         { headers: { token: user.accessToken } }
       );
       try {
-        await axios.post(`/orders/${user && user.user._id}`, order, {
+        await axios.post(`/api/orders/${user && user.user._id}`, order, {
           headers: { token: user.accessToken },
         });
         dispatch(resetCart());

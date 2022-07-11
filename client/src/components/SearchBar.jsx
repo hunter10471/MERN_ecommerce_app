@@ -16,7 +16,7 @@ export const SearchBar = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get('/products/search?name=' + value);
+      const res = await axios.get('/api/products/search?name=' + value);
       setData(res.data);
     };
     fetchData();

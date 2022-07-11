@@ -3,7 +3,6 @@ import axios from 'axios';
 
 
 import { useNavigate } from 'react-router-dom';
-import { BASE_URL } from '../requestMethods';
 import { Helmet } from 'react-helmet-async';
 
 
@@ -22,7 +21,7 @@ export const RecoverPage = () => {
   const sendMail = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(BASE_URL + 'auth/email-sent', { email: email });
+      await axios.post('/api/auth/email-sent', { email: email });
       navigate(`/otp-verify?email=${email}`, { replace: true });
     } catch (error) {
       console.log(error);

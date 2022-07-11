@@ -21,7 +21,7 @@ export const OrdersPage = () => {
 
   useEffect(()=>{
     const getOrders = async() =>{
-      const res = await axios.get(`/orders/${user.user._id}`,{headers: {'token' : user.accessToken}});
+      const res = await axios.get(`/api/orders/${user.user._id}`,{headers: {'token' : user.accessToken}});
       if(res.data){
         setData(res.data.order);
         setOrders(true);

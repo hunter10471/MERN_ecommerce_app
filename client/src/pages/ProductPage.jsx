@@ -24,7 +24,7 @@ export const ProductPage = () => {
   useEffect(()=>{
     window.scrollTo(0,0);
     const fetchProduct = async() =>{
-      const product = await axios.get('/products'+location.search);
+      const product = await axios.get('/api/products'+location.search);
       setData(product.data.product);
       setCategory(product.data.product.productCategory);
     };

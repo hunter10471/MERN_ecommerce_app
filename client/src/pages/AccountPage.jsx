@@ -4,7 +4,6 @@ import axios from 'axios';
 
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { BASE_URL } from '../requestMethods';
 import { Alert } from '@mui/material';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
@@ -52,7 +51,7 @@ export const AccountPage = () => {
   const updateInfo = async (e) => {
     try {
       e.preventDefault();
-      await axios.put(BASE_URL + `users/${user.user._id}`, updatedUserInfo, {
+      await axios.put(`/api/users/${user.user._id}`, updatedUserInfo, {
         headers: { token: user.accessToken },
       });
       setSuccessModal(true);
@@ -68,7 +67,7 @@ export const AccountPage = () => {
     try {
       const getUser = async () => {
         try {
-          let res = await axios.get(`/users/${user.user._id}`, {
+          let res = await axios.get(`/api/users/${user.user._id}`, {
             headers: { token: user.accessToken },
           });
           if (res) setData(res.data);

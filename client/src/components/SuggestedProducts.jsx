@@ -39,7 +39,7 @@ export const SuggestedProducts = ({ category = null }) => {  //eslint-disable-li
   useEffect(() => {
     const fetchCat = async () => {
       const products = await axios.get(
-        '/products/category?category=' + category[0]
+        '/api/products/category?category=' + category[0]
       );
       setData(products.data.products);
     };

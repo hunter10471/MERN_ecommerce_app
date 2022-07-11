@@ -31,7 +31,7 @@ export const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.get(`/users/public?username=${username}`);
+      await axios.get(`/api/users/public?username=${username}`);
       login(dispatch, { username, password })
         .then((res) => {
           if (res.response.status === 403) {
