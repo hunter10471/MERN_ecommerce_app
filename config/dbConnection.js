@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const logger = require('../utils/logger');
 
-mongoose.connect(process.env.MONGO_URI).then(()=>{
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/ecommerce').then(()=>{
     logger.info('Connected to database succesfully.');
 }).catch((error)=>{
     logger.error({message:'Could not connect to database.',error:error});
