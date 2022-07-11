@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import { Link } from 'react-router-dom';
-import { BASE_URL } from '../requestMethods';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 
@@ -35,7 +34,7 @@ export const Register = () => {
       password: password,
     };
     try {
-      await axios.post(BASE_URL + `auth/register`, user); //eslint-disable-line
+      await axios.post('/auth/register', user); //eslint-disable-line
       setSuccessMsg(true);
     } catch (error) {
       if (error.response.status === 400) {

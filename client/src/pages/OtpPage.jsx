@@ -3,7 +3,6 @@ import axios from 'axios';
 
 
 import { Link, useLocation } from 'react-router-dom';
-import { BASE_URL } from '../requestMethods';
 
 
 import otpSvg from '../images/otp.svg';
@@ -26,7 +25,7 @@ export const OtpPage = () => {
   const changePass = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(BASE_URL + 'auth/change-password', {
+      await axios.post('/auth/change-password', {
         email: email,
         otpCode: otp,
         password: password,

@@ -68,7 +68,7 @@ export const AccountPage = () => {
     try {
       const getUser = async () => {
         try {
-          let res = await axios.get(BASE_URL + `users/${user.user._id}`, {
+          let res = await axios.get(`/users/${user.user._id}`, {
             headers: { token: user.accessToken },
           });
           if (res) setData(res.data);

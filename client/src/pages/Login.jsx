@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../redux/apiCalls';
-import { BASE_URL } from '../requestMethods';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 
@@ -32,7 +31,7 @@ export const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.get(BASE_URL + `users/public?username=${username}`);
+      await axios.get(`/users/public?username=${username}`);
       login(dispatch, { username, password })
         .then((res) => {
           if (res.response.status === 403) {

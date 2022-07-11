@@ -5,7 +5,6 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import {useSelector} from 'react-redux';
 import {Order} from '../components/Order';
-import { BASE_URL } from '../requestMethods';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
@@ -22,7 +21,7 @@ export const OrdersPage = () => {
 
   useEffect(()=>{
     const getOrders = async() =>{
-      const res = await axios.get(BASE_URL+`orders/${user.user._id}`,{headers: {'token' : user.accessToken}});
+      const res = await axios.get(`/orders/${user.user._id}`,{headers: {'token' : user.accessToken}});
       if(res.data){
         setData(res.data.order);
         setOrders(true);

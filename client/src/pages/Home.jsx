@@ -59,7 +59,7 @@ export const Home = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const products = await axios.get(BASE_URL + 'products');
+      const products = await axios.get('/products');
       setData(products);
     };
 

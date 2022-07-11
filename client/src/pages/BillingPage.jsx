@@ -61,7 +61,7 @@ export const BillingPage = () => {
         { headers: { token: user.accessToken } }
       );
       try {
-        await axios.post(BASE_URL + `orders/${user && user.user._id}`, order, {
+        await axios.post(`/orders/${user && user.user._id}`, order, {
           headers: { token: user.accessToken },
         });
         dispatch(resetCart());

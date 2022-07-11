@@ -4,7 +4,6 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { BASE_URL } from '../requestMethods';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../redux/cartRedux';
@@ -25,7 +24,7 @@ export const ProductPage = () => {
   useEffect(()=>{
     window.scrollTo(0,0);
     const fetchProduct = async() =>{
-      const product = await axios.get(BASE_URL+'products'+location.search);
+      const product = await axios.get('/products'+location.search);
       setData(product.data.product);
       setCategory(product.data.product.productCategory);
     };

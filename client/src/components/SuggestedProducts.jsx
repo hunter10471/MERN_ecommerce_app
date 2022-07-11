@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { BASE_URL } from '../requestMethods';
 import { CardSkeleton } from './CardSkeleton';
 import { ProductCard } from './ProductCard';
 
@@ -40,7 +39,7 @@ export const SuggestedProducts = ({ category = null }) => {  //eslint-disable-li
   useEffect(() => {
     const fetchCat = async () => {
       const products = await axios.get(
-        BASE_URL + 'products/category?category=' + category[0]
+        '/products/category?category=' + category[0]
       );
       setData(products.data.products);
     };

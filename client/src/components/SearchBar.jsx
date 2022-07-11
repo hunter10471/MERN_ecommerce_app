@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 
-import { BASE_URL } from '../requestMethods';
 import { Link } from 'react-router-dom';
 
 
@@ -17,7 +16,7 @@ export const SearchBar = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get(BASE_URL + 'products/search?name=' + value);
+      const res = await axios.get('/products/search?name=' + value);
       setData(res.data);
     };
     fetchData();
