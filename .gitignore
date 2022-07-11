@@ -4,12 +4,11 @@
 .env.production.local
 .env.local
 
-/build
-/client/build
+build
 
 
-/server/node_modules/
-/client/node_modules/
+node_modules/
+../client/node_modules/
 
 /jspm_packages/
 
