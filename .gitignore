@@ -1,0 +1,14 @@
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+/build
+/client/build
+
+
+/node_modules/
+/jspm_packages/
+
+.npm
