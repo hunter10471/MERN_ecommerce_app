@@ -20,6 +20,16 @@ number: 4242 4242 4242 4242
 date: any future date
 cvc : any 3 digit mumber
 ```
+_.env variables_
+```bash
+MONGO_URI <Your mongodb URI>
+CRYPTOJS_SECRET_KEY <Any secret combination or password>
+JWT_SECRET_KEY <Any secret combination or password>
+STRIPE_SECRET <Your secret stripe key found on your stripe dashboard>
+STRIPE_PUBLIC <Your public stripe key found on your stripe dashboard>
+MAIL_EMAIL <Any email you have>
+MAIL_PASS <Its password>
+```
 
 ## 🔥 Features
 
