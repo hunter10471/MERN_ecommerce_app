@@ -22,7 +22,7 @@ export const RecoverPage = () => {
     e.preventDefault();
     try {
       await axios.post('/api/auth/email-sent', { email: email });
-      navigate(`/otp-verify?email=${email}`, { replace: true });
+      navigate(`/recover/otp-verify?email=${email}`, { replace: true });
     } catch (error) {
       console.log(error);
       setError(true);

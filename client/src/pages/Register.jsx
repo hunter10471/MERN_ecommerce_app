@@ -123,7 +123,7 @@ export const Register = () => {
                 required
                 onChange={(e) => setEmail(e.target.value)}
                 className='placeholder:italic hover:bg-slate-100 border-2  hover:border-blue-400 transition-all duration-200 my-2 text-xs md:text-sm  p-4 min-w-[300px]  focus:outline-none focus:border-blue-400 ring-2 ring-transparent rounded-xl '
-                type='text'
+                type='email'
                 placeholder='Email'
               />
             </div>
