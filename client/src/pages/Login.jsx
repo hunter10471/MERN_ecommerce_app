@@ -131,7 +131,7 @@ export const Login = () => {
               <div className='relative flex flex-col w-full'>
                 <span
                   onClick={() => setVisiblePassword(!visiblePassword)}
-                  className='absolute right-4 bottom-[1.4rem] sm:bottom-[2rem] cursor-pointer text-gray-500 '
+                  className='absolute right-4 bottom-[1.4rem] cursor-pointer text-gray-500 '
                 >
                   {visiblePassword === true ? (
                     <VisibilityOffIcon />
